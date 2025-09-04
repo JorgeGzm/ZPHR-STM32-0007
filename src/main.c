@@ -69,17 +69,20 @@ int main(void)
 
     display_init_screens();
     
-    #if 0
+    #if 1
     /* basic screen demo */
     main_screen_create();
     main_screen_show();
     #endif
 
+    #if 0
     screen_ex1();
+    #endif
+
     while (true)
     {
         display_update();
-        k_msleep(50);
+        k_msleep(1000);
     }
 
     return 0;

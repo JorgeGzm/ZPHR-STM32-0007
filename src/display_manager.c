@@ -28,15 +28,16 @@ void display_init_screens(void)
     }
 
     lv_init();
-
+    
     display_set_backlight(1);
     printk("LVGL initialized\r\n");
+
+    display_blanking_off(display_device);
 }
 
 void display_update(void)
 {
-    lv_task_handler();
-    display_blanking_off(display_device);
+    lv_timer_handler();
 }
 
 int display_map_button_cb(int btn)

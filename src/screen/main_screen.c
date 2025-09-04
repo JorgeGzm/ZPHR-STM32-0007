@@ -42,43 +42,69 @@ static void main_screen_event_cb(lv_event_t *e) {
             break;
     }
 }
+
 void main_screen_create(void)
 {
-    main_screen_container = lv_obj_create(NULL);
+    /* PRIMEIRO: Inicializar estilos */
+    lv_style_init(&style_amber);
+    lv_style_init(&style_blue);
+    lv_style_init(&style_red);
+    lv_style_init(&style_black);
 
+    lv_style_set_text_color(&style_amber, lv_palette_main(LV_PALETTE_AMBER));
+    lv_style_set_text_color(&style_red, lv_palette_main(LV_PALETTE_RED));
+    lv_style_set_text_color(&style_blue, lv_palette_main(LV_PALETTE_BLUE));
+    lv_style_set_text_color(&style_black, lv_color_black());
+
+    /* Criar container principal */
+    main_screen_container = lv_obj_create(NULL);
+    
+    /* Configurar fundo (opcional) */
+    lv_obj_set_style_bg_color(main_screen_container, lv_color_white(), 0);
+    lv_obj_set_style_bg_opa(main_screen_container, LV_OPA_COVER, 0);
+
+    /* Adicionar event callbacks */
     lv_obj_add_event_cb(main_screen_container, main_screen_event_cb, LV_EVENT_SCREEN_LOADED, NULL);
     lv_obj_add_event_cb(main_screen_container, main_screen_event_cb, LV_EVENT_SCREEN_UNLOADED, NULL);
 
     /* heartbeat indication */
     heartbeat = lv_label_create(main_screen_container);
     lv_label_set_recolor(heartbeat, true);
-    lv_obj_add_style(heartbeat, &style_red, 0);
+    lv_obj_add_style(heartbeat, &style_red, 0);  // Agora o estilo já foi inicializado
     lv_label_set_text(heartbeat, ".");
     lv_obj_align(heartbeat, LV_ALIGN_TOP_MID, 0, 2);
 
-    /* Load label*/
+    /* Load label */
     load_label = lv_label_create(main_screen_container);
     lv_label_set_recolor(load_label, true);
+    
+    /* Verificar se a fonte está disponível */
+    #if LV_FONT_MONTSERRAT_48
     lv_obj_set_style_text_font(load_label, &lv_font_montserrat_48, LV_PART_MAIN | LV_STATE_DEFAULT);
+    #else
+    /* Use fonte padrão se Montserrat 48 não estiver disponível */
+    lv_obj_set_style_text_font(load_label, &lv_font_montserrat_20, LV_PART_MAIN | LV_STATE_DEFAULT);
+    #endif
+    
     lv_label_set_text(load_label, "");
     lv_label_set_long_mode(load_label, LV_LABEL_LONG_CLIP);
     lv_obj_align(load_label, LV_ALIGN_TOP_RIGHT, 0, 40);
     lv_obj_set_width(load_label, 230);
     lv_obj_set_style_text_align(load_label, LV_TEXT_ALIGN_RIGHT, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    /* capacity label*/
+    /* capacity label */
     capacity_label = lv_label_create(main_screen_container);
     lv_label_set_recolor(capacity_label, true);
     lv_label_set_text(capacity_label, "---");
     lv_obj_align(capacity_label, LV_ALIGN_TOP_LEFT, 9, 10);
 
-    /* Gross Net label*/
+    /* Gross Net label */
     gn_label = lv_label_create(main_screen_container);
     lv_label_set_recolor(gn_label, true);
     lv_label_set_text(gn_label, "#000000 gross#");
     lv_obj_align(gn_label, LV_ALIGN_TOP_LEFT, 3, 100);
 
-    /* Unit Net label*/
+    /* Unit Net label */
     unit_label = lv_label_create(main_screen_container);
     lv_label_set_recolor(unit_label, true);
     lv_label_set_text(unit_label, "#255A9B t#");
@@ -132,7 +158,7 @@ void main_screen_create(void)
     lv_label_set_text(rssi_value, "0");
     lv_obj_align(rssi_value, LV_ALIGN_TOP_RIGHT, -3, 222);
 
-    /* ID Net label*/
+    /* ID Net label */
     id_label = lv_label_create(main_screen_container);
     lv_label_set_recolor(id_label, true);
     lv_label_set_text(id_label, "Paired ID:#255A9B  No Cell#");
@@ -143,16 +169,6 @@ void main_screen_create(void)
     lv_label_set_recolor(connection_label, true);
     lv_label_set_text(connection_label, "#ff0000 Disconnected#");
     lv_obj_align(connection_label, LV_ALIGN_BOTTOM_MID, 0, -10);
-
-    lv_style_init(&style_amber);
-    lv_style_init(&style_blue);
-    lv_style_init(&style_red);
-    lv_style_init(&style_black);
-
-    lv_style_set_text_color(&style_amber, lv_palette_main(LV_PALETTE_AMBER));
-    lv_style_set_text_color(&style_red, lv_palette_main(LV_PALETTE_RED));
-    lv_style_set_text_color(&style_blue, lv_palette_main(LV_PALETTE_BLUE));
-    lv_style_set_text_color(&style_black, lv_color_black());
 
     printk("SCREEN_MAIN screen created\r\n");
 }
