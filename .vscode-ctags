@@ -1,0 +1,401 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/work/08-Witte/15-HFN/hfn-bd-2008-zigbee-fw/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+ADC_ACQUISITION_TIME	src/adc.c	/^#define ADC_ACQUISITION_TIME /;"	d	file:
+ADC_FREQUENCY	src/adc.c	/^#define ADC_FREQUENCY /;"	d	file:
+ADC_GAIN	src/adc.c	/^#define ADC_GAIN /;"	d	file:
+ADC_H	src/include/adc.h	/^#define ADC_H$/;"	d
+ADC_MAX_VALUE	src/adc.c	/^#define ADC_MAX_VALUE /;"	d	file:
+ADC_REFERENCE	src/adc.c	/^#define ADC_REFERENCE /;"	d	file:
+ADC_RESOLUTION	src/adc.c	/^#define ADC_RESOLUTION /;"	d	file:
+BACKLIGHT	src/include/main.h	/^#define BACKLIGHT /;"	d
+BOOT_IMAGE_H	src/include/boot_image.h	/^#define BOOT_IMAGE_H$/;"	d
+BUTTON_BACKLIGHT	src/include/screen.h	/^    BUTTON_BACKLIGHT,$/;"	e	enum:__anon1fba21a50103
+BUTTON_F1	src/include/screen.h	/^    BUTTON_F1,$/;"	e	enum:__anon1fba21a50103
+BUTTON_GROSSNET	src/include/screen.h	/^    BUTTON_GROSSNET,$/;"	e	enum:__anon1fba21a50103
+BUTTON_POWER	src/include/screen.h	/^    BUTTON_POWER,$/;"	e	enum:__anon1fba21a50103
+BUTTON_STATE	src/include/screen.h	/^} BUTTON_STATE;$/;"	t	typeref:enum:__anon1fba21a50103
+BUTTON_TARE	src/include/screen.h	/^    BUTTON_TARE,$/;"	e	enum:__anon1fba21a50103
+BUZZER	src/include/main.h	/^#define BUZZER /;"	d
+Buttons	src/main.c	/^} Buttons;$/;"	t	typeref:struct:btn	file:
+CAPACITY	src/include/machine_state.h	/^    CAPACITY,$/;"	e	enum:state
+DEBOUNCE_DELAY_MS	src/main.c	/^#define DEBOUNCE_DELAY_MS /;"	d	file:
+DEBUG_DEBOUNCE	src/main.c	/^#define DEBUG_DEBOUNCE /;"	d	file:
+DECIMAL_PLACE	src/include/machine_state.h	/^    DECIMAL_PLACE,$/;"	e	enum:state
+DISABLE_BLE	src/include/utils.h	/^#define DISABLE_BLE /;"	d
+DISABLE_STREAMING	src/include/utils.h	/^#define DISABLE_STREAMING /;"	d
+ELETRIC_HCC	src/include/utils.h	/^#define ELETRIC_HCC /;"	d
+ENABLE_BLE	src/include/utils.h	/^#define ENABLE_BLE /;"	d
+ENABLE_STREAMING	src/include/utils.h	/^#define ENABLE_STREAMING /;"	d
+ENGINEER_HCC	src/include/utils.h	/^#define ENGINEER_HCC /;"	d
+ENGINEER_VALUE	src/include/utils.h	/^#define ENGINEER_VALUE /;"	d
+EXTERN_decimal_places	src/machine_state.c	/^uint8_t EXTERN_decimal_places;$/;"	v	typeref:typename:uint8_t
+EXTERN_flash_data	src/machine_state.c	/^struct FlashData EXTERN_flash_data = {$/;"	v	typeref:struct:FlashData
+EXTERN_global_display	src/main.c	/^const struct device *EXTERN_global_display = DEVICE_DT_GET(DT_CHOSEN(zephyr_display));$/;"	v	typeref:typename:const struct device *
+EXTERN_load_unit	src/machine_state.c	/^uint8_t EXTERN_load_unit = 0;$/;"	v	typeref:typename:uint8_t
+EXTERN_machine_state	src/main.c	/^MACHINE_STATE EXTERN_machine_state = IDLE;$/;"	v	typeref:typename:MACHINE_STATE
+EXTERN_max_capacity_int	src/machine_state.c	/^int EXTERN_max_capacity_int = 0;$/;"	v	typeref:typename:int
+EXTERN_tare	src/machine_state.c	/^float EXTERN_tare = 0;$/;"	v	typeref:typename:float
+FIRMWARE_VERSION	src/include/screen.h	/^#define FIRMWARE_VERSION /;"	d
+FRAME_TYPE_INDEX	src/include/utils.h	/^#define FRAME_TYPE_INDEX /;"	d
+FlashData	src/include/machine_state.h	/^struct FlashData {$/;"	s
+HardFault_Handler	src/main.c	/^void HardFault_Handler(void)$/;"	f	typeref:typename:void
+IDLE	src/include/machine_state.h	/^    IDLE,$/;"	e	enum:state
+KG	src/menu/config.h	/^    KG = 0,$/;"	e	enum:__anon4f2cd66c0103
+KG	src/utils.c	/^    KG = 0,$/;"	e	enum:Unit	file:
+KGF	src/menu/config.h	/^    KGF,$/;"	e	enum:__anon4f2cd66c0103
+KGF	src/utils.c	/^    KGF,$/;"	e	enum:Unit	file:
+KIP	src/menu/config.h	/^    KIP$/;"	e	enum:__anon4f2cd66c0103
+KIP	src/utils.c	/^    KIP$/;"	e	enum:Unit	file:
+KN	src/menu/config.h	/^    KN,$/;"	e	enum:__anon4f2cd66c0103
+KN	src/utils.c	/^    KN,$/;"	e	enum:Unit	file:
+LB	src/menu/config.h	/^    LB,$/;"	e	enum:__anon4f2cd66c0103
+LB	src/utils.c	/^    LB,$/;"	e	enum:Unit	file:
+LBF	src/menu/config.h	/^    LBF,$/;"	e	enum:__anon4f2cd66c0103
+LBF	src/utils.c	/^    LBF,$/;"	e	enum:Unit	file:
+LIST_SCREEN	src/include/machine_state.h	/^} LIST_SCREEN;$/;"	t	typeref:enum:__anonc76fa69a0103
+LOAD	src/include/machine_state.h	/^    LOAD,$/;"	e	enum:state
+LOGO_HFN_H	src/include/logo_hfn.h	/^#define LOGO_HFN_H$/;"	d
+LV_ATTRIBUTE_IMG_BOOT_IMAGE	src/include/boot_image.h	/^#define LV_ATTRIBUTE_IMG_BOOT_IMAGE$/;"	d
+LV_ATTRIBUTE_IMG_LOGO_HFN	src/include/logo_hfn.h	/^#define LV_ATTRIBUTE_IMG_LOGO_HFN$/;"	d
+LV_ATTRIBUTE_MEM_ALIGN	src/include/boot_image.h	/^#define LV_ATTRIBUTE_MEM_ALIGN$/;"	d
+LV_ATTRIBUTE_MEM_ALIGN	src/include/logo_hfn.h	/^#define LV_ATTRIBUTE_MEM_ALIGN$/;"	d
+LV_LVGL_H_INCLUDE_SIMPLE	src/include/boot_image.h	/^            #define LV_LVGL_H_INCLUDE_SIMPLE$/;"	d
+LV_LVGL_H_INCLUDE_SIMPLE	src/include/logo_hfn.h	/^            #define LV_LVGL_H_INCLUDE_SIMPLE$/;"	d
+LV_USE_REFR_NON_BLOCKING	src/include/screen.h	/^#define LV_USE_REFR_NON_BLOCKING /;"	d
+MACHINE_STATE	src/include/machine_state.h	/^} MACHINE_STATE;$/;"	t	typeref:enum:state
+MACHINE_STATE_H	src/include/machine_state.h	/^#define MACHINE_STATE_H$/;"	d
+MACRO_BBATT_ABOVE_50	src/include/screen.h	/^#define MACRO_BBATT_ABOVE_50 /;"	d
+MACRO_BBATT_BELLOW_25	src/include/screen.h	/^#define MACRO_BBATT_BELLOW_25 /;"	d
+MACRO_BBATT_MID_50_25	src/include/screen.h	/^#define MACRO_BBATT_MID_50_25 /;"	d
+MADDRESS_CHK_INDEX	src/include/utils.h	/^#define MADDRESS_CHK_INDEX /;"	d
+MADDRESS_LENGTH	src/include/utils.h	/^#define MADDRESS_LENGTH /;"	d
+MADDRESS_RESPONSE_FRAME	src/include/utils.h	/^#define MADDRESS_RESPONSE_FRAME /;"	d
+MADDRESS_UPT_INDEX	src/include/utils.h	/^#define MADDRESS_UPT_INDEX /;"	d
+MAIN_H	src/include/main.h	/^#define MAIN_H$/;"	d
+MAX_STATE	src/include/machine_state.h	/^    MAX_STATE,$/;"	e	enum:state
+MENU_BLACKBOX	src/include/machine_state.h	/^        MENU_BLACKBOX,$/;"	e	enum:__anonc76fa69a0103
+MENU_BLACKBOX_H	src/menu/blackbox.h	/^#define MENU_BLACKBOX_H$/;"	d
+MENU_CONFIG	src/include/machine_state.h	/^        MENU_CONFIG,$/;"	e	enum:__anonc76fa69a0103
+MENU_CONFIG_H	src/menu/config.h	/^#define MENU_CONFIG_H$/;"	d
+MENU_INFO	src/include/machine_state.h	/^        MENU_INFO,$/;"	e	enum:__anonc76fa69a0103
+MENU_INFO_H	src/menu/info.h	/^#define MENU_INFO_H$/;"	d
+MENU_MAIN_H	src/menu/menu.h	/^#define MENU_MAIN_H$/;"	d
+MENU_SCREEN	src/include/machine_state.h	/^        MENU_SCREEN,$/;"	e	enum:__anonc76fa69a0103
+MENU_UTILS_H	src/menu/menu_utils.h	/^#define MENU_UTILS_H$/;"	d
+MONTSERRAT_17_H	src/fonts/montserrat_17.h	/^#define MONTSERRAT_17_H$/;"	d
+MONTSERRAT_68_H	src/fonts/montserrat_68.h	/^#define MONTSERRAT_68_H$/;"	d
+N	src/menu/config.h	/^    N,$/;"	e	enum:__anon4f2cd66c0103
+N	src/utils.c	/^    N,$/;"	e	enum:Unit	file:
+NONE	src/include/screen.h	/^    NONE,$/;"	e	enum:__anon1fba21a50103
+PAIR_MODE	src/include/machine_state.h	/^    PAIR_MODE,$/;"	e	enum:state
+PAIR_MODE_BROADCAST	src/include/machine_state.h	/^    PAIR_MODE_BROADCAST,$/;"	e	enum:state
+PRINT_TX_RX	src/main.c	/^#define PRINT_TX_RX /;"	d	file:
+PRIORITY	src/main.c	/^#define PRIORITY /;"	d	file:
+R1	src/adc.c	/^const float R1 = 330000.0; \/\/ em ohms$/;"	v	typeref:typename:const float
+R2	src/adc.c	/^const float R2 = 1000000.0; \/\/ em ohms$/;"	v	typeref:typename:const float
+RBATTERY	src/include/machine_state.h	/^    RBATTERY,$/;"	e	enum:state
+READ_ADC	src/include/utils.h	/^#define READ_ADC /;"	d
+READ_ADC_BATTERY	src/include/utils.h	/^#define READ_ADC_BATTERY /;"	d
+READ_BATT_ONLY	src/include/machine_state.h	/^    READ_BATT_ONLY,$/;"	e	enum:state
+READ_CAPACITY	src/include/utils.h	/^#define READ_CAPACITY /;"	d
+READ_EEPROM_DPLACES	src/include/utils.h	/^#define READ_EEPROM_DPLACES /;"	d
+READ_EEPROM_UNIT	src/include/utils.h	/^#define READ_EEPROM_UNIT /;"	d
+READ_HCC	src/include/utils.h	/^#define READ_HCC /;"	d
+READ_INT_EEPROM	src/include/utils.h	/^#define READ_INT_EEPROM /;"	d
+READ_LONG_EEPROM	src/include/utils.h	/^#define READ_LONG_EEPROM /;"	d
+READ_MASTER_ID	src/include/utils.h	/^#define READ_MASTER_ID /;"	d
+READ_PER_BATTERY	src/include/utils.h	/^#define READ_PER_BATTERY /;"	d
+READ_UNIT_REGISTER	src/include/utils.h	/^#define READ_UNIT_REGISTER /;"	d
+READ_mV	src/include/utils.h	/^#define READ_mV /;"	d
+RECEIVE_BUFF_SIZE	src/include/main.h	/^#define RECEIVE_BUFF_SIZE /;"	d
+RECEIVE_PACKET	src/include/utils.h	/^#define RECEIVE_PACKET /;"	d
+RECEIVE_TIMEOUT	src/include/main.h	/^#define RECEIVE_TIMEOUT /;"	d
+REMOTE_COMMAND_RESPONSE	src/include/utils.h	/^#define REMOTE_COMMAND_RESPONSE /;"	d
+RES_LIPO	src/adc.c	/^#define RES_LIPO /;"	d	file:
+RSSI	src/include/machine_state.h	/^    RSSI,$/;"	e	enum:state
+RSSI_REFRESH	src/include/machine_state.h	/^    RSSI_REFRESH,$/;"	e	enum:state
+SAVE_CHAR_BEGIN	src/include/utils.h	/^#define SAVE_CHAR_BEGIN /;"	d
+SAVE_CHAR_EEPROM	src/include/utils.h	/^#define SAVE_CHAR_EEPROM /;"	d
+SAVE_INT_EEPROM	src/include/utils.h	/^#define SAVE_INT_EEPROM /;"	d
+SAVE_LONG_EEPROM	src/include/utils.h	/^#define SAVE_LONG_EEPROM /;"	d
+SAVE_MASTER_ID_BEGIN	src/include/utils.h	/^#define SAVE_MASTER_ID_BEGIN /;"	d
+SAVE_MASTER_ID_END	src/include/utils.h	/^#define SAVE_MASTER_ID_END /;"	d
+SAVE_NUMBER_BEGIN	src/include/utils.h	/^#define SAVE_NUMBER_BEGIN /;"	d
+SCREEN_H	src/include/screen.h	/^#define SCREEN_H$/;"	d
+STACKSIZE	src/main.c	/^#define STACKSIZE /;"	d	file:
+SW0	src/include/main.h	/^#define SW0 /;"	d
+SW1	src/include/main.h	/^#define SW1 /;"	d
+SW2	src/include/main.h	/^#define SW2 /;"	d
+SW3	src/include/main.h	/^#define SW3 /;"	d
+SW4	src/include/main.h	/^#define SW4 /;"	d
+Screen	src/include/machine_state.h	/^} Screen ;$/;"	t	typeref:struct:__anonc76fa69a0208
+T	src/menu/config.h	/^    T,$/;"	e	enum:__anon4f2cd66c0103
+T	src/utils.c	/^    T,$/;"	e	enum:Unit	file:
+TX_FAILURE	src/include/utils.h	/^#define TX_FAILURE /;"	d
+UNIT	src/include/machine_state.h	/^    UNIT,$/;"	e	enum:state
+UTILS_H	src/include/utils.h	/^#define UTILS_H$/;"	d
+Unit	src/menu/config.h	/^} Unit;$/;"	t	typeref:enum:__anon4f2cd66c0103
+Unit	src/utils.c	/^enum Unit {$/;"	g	file:
+VERSION	src/include/screen.h	/^#define VERSION /;"	d
+VREF	src/adc.c	/^#define VREF /;"	d	file:
+WORK_SCREEN	src/include/machine_state.h	/^        WORK_SCREEN,$/;"	e	enum:__anonc76fa69a0103
+ZIGBEE_LOOP_DELAY1	src/main.c	/^#define ZIGBEE_LOOP_DELAY1 /;"	d	file:
+ZIGBEE_LOOP_DELAY2	src/main.c	/^#define ZIGBEE_LOOP_DELAY2 /;"	d	file:
+__anon1fba21a50103	src/include/screen.h	/^typedef enum {$/;"	g
+__anon4f2cd66c0103	src/menu/config.h	/^typedef enum {$/;"	g
+__anonc76fa69a0103	src/include/machine_state.h	/^typedef enum {$/;"	g
+__anonc76fa69a0208	src/include/machine_state.h	/^{$/;"	s
+adc_buffer	src/adc.c	/^static uint16_t adc_buffer[1];$/;"	v	typeref:typename:uint16_t[1]	file:
+adc_channel_vad_bat	src/adc.c	/^struct adc_channel_cfg adc_channel_vad_bat = {$/;"	v	typeref:struct:adc_channel_cfg
+adc_channel_vpil	src/adc.c	/^struct adc_channel_cfg adc_channel_vpil = {$/;"	v	typeref:struct:adc_channel_cfg
+adc_dev	src/adc.c	/^const struct device *adc_dev = DEVICE_DT_GET(DT_NODELABEL(adc1));  \/\/ Obtém o dispositivo ADC/;"	v	typeref:typename:const struct device *
+adc_thread	src/main.c	/^void adc_thread()$/;"	f	typeref:typename:void
+adjust_macaddress	src/utils.c	/^void adjust_macaddress(uint8_t *array, uint8_t length, uint8_t *mac_add){$/;"	f	typeref:typename:void
+backbox_overload100	src/include/machine_state.h	/^    uint16_t backbox_overload100;$/;"	m	struct:FlashData	typeref:typename:uint16_t
+backbox_overload110	src/include/machine_state.h	/^    uint16_t backbox_overload110;$/;"	m	struct:FlashData	typeref:typename:uint16_t
+backlight	src/main.c	/^    uint8_t backlight;$/;"	m	struct:btn	typeref:typename:uint8_t	file:
+backlight_label	src/screen.c	/^lv_obj_t *backlight_label;$/;"	v	typeref:typename:lv_obj_t *
+backlight_string	src/include/main.h	/^char backlight_string[6];$/;"	v	typeref:typename:char[6]
+bbat_label	src/screen.c	/^lv_obj_t *bbat_label;$/;"	v	typeref:typename:lv_obj_t *
+bbat_value	src/screen.c	/^lv_obj_t *bbat_value;$/;"	v	typeref:typename:lv_obj_t *
+blackbox_menu_screen_container	src/menu/blackbox.c	/^lv_obj_t *blackbox_menu_screen_container;$/;"	v	typeref:typename:lv_obj_t *
+blackbox_nom	src/include/machine_state.h	/^    uint16_t blackbox_nom;$/;"	m	struct:FlashData	typeref:typename:uint16_t
+boot_image	src/include/boot_image.h	/^const lv_img_dsc_t boot_image = {$/;"	v	typeref:typename:const lv_img_dsc_t
+boot_image_map	src/include/boot_image.h	/^const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_BOOT_IMAGE uint8_t boot_i/;"	v	typeref:typename:const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_BOOT_IMAGE uint8_t[]
+btn	src/main.c	/^typedef struct btn$/;"	s	file:
+buttons	src/main.c	/^Buttons buttons = {0, 0, 0, 0, 0};$/;"	v	typeref:typename:Buttons
+buttons_tread	src/main.c	/^void buttons_tread()$/;"	f	typeref:typename:void
+buzzer_function	src/main.c	/^void buzzer_function(uint8_t value)$/;"	f	typeref:typename:void
+cache	src/fonts/montserrat_17.c	/^static  lv_font_fmt_txt_glyph_cache_t cache;$/;"	v	typeref:typename:lv_font_fmt_txt_glyph_cache_t	file:
+cache	src/fonts/montserrat_68.c	/^static  lv_font_fmt_txt_glyph_cache_t cache;$/;"	v	typeref:typename:lv_font_fmt_txt_glyph_cache_t	file:
+calc_capacity	src/main.c	/^void calc_capacity(float load, int max_capacity)$/;"	f	typeref:typename:void
+capacity_label	src/screen.c	/^lv_obj_t *capacity_label;$/;"	v	typeref:typename:lv_obj_t *
+cb_switch	src/include/main.h	/^struct gpio_callback cb_switch[5];$/;"	v	typeref:struct:gpio_callback[5]
+cells_label	src/screen.c	/^lv_obj_t *cells_label;$/;"	v	typeref:typename:lv_obj_t *
+change_machine_state	src/main.c	/^void change_machine_state(MACHINE_STATE old_machine, MACHINE_STATE machine)$/;"	f	typeref:typename:void
+change_screen	src/machine_state.c	/^void change_screen(LIST_SCREEN new_screen)$/;"	f	typeref:typename:void
+changed	src/include/machine_state.h	/^    int changed;$/;"	m	struct:__anonc76fa69a0208	typeref:typename:int
+check_connection	src/main.c	/^void check_connection()$/;"	f	typeref:typename:void
+check_maddress	src/utils.c	/^bool check_maddress(uint8_t *array, uint8_t *mac_add){$/;"	f	typeref:typename:bool
+checksum	src/utils.c	/^bool checksum(uint8_t* array, uint8_t length) {$/;"	f	typeref:typename:bool
+checksum_calc	src/utils.c	/^void checksum_calc(uint8_t *array, uint8_t length){$/;"	f	typeref:typename:void
+clear_screen_changed	src/machine_state.c	/^void clear_screen_changed()$/;"	f	typeref:typename:void
+cmaps	src/fonts/montserrat_17.c	/^static const lv_font_fmt_txt_cmap_t cmaps[] =$/;"	v	typeref:typename:const lv_font_fmt_txt_cmap_t[]	file:
+cmaps	src/fonts/montserrat_68.c	/^static const lv_font_fmt_txt_cmap_t cmaps[] =$/;"	v	typeref:typename:const lv_font_fmt_txt_cmap_t[]	file:
+command	src/include/main.h	/^uint8_t command[] = {0x7e, 0x00, 0x0F, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xF/;"	v	typeref:typename:uint8_t[]
+command_capacity	src/include/main.h	/^uint8_t command_capacity[] = {0x7E, 0x00, 0x14, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, /;"	v	typeref:typename:uint8_t[]
+command_decimal	src/include/main.h	/^uint8_t command_decimal[] = {$/;"	v	typeref:typename:uint8_t[]
+command_eeprom	src/include/main.h	/^uint8_t command_eeprom[] = {0x7E, 0x00, 0x14, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x/;"	v	typeref:typename:uint8_t[]
+command_pair_rssi	src/include/main.h	/^uint8_t command_pair_rssi[] = {0x7E, 0x00, 0x0F, 0x17, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,/;"	v	typeref:typename:uint8_t[]
+command_pair_rssi_broadcast	src/include/main.h	/^uint8_t command_pair_rssi_broadcast[] = {0x7E, 0x00, 0x0F, 0x17, 0x01, 0x00, 0x00, 0x00, 0x00, 0/;"	v	typeref:typename:uint8_t[]
+command_unit	src/include/main.h	/^uint8_t command_unit[] = {$/;"	v	typeref:typename:uint8_t[]
+config_focus_cb	src/menu/config.c	/^void config_focus_cb(lv_event_t *e) {$/;"	f	typeref:typename:void
+config_menu_group	src/menu/config.c	/^lv_group_t *config_menu_group;$/;"	v	typeref:typename:lv_group_t *
+config_menu_screen_container	src/menu/config.c	/^lv_obj_t *config_menu_screen_container;$/;"	v	typeref:typename:lv_obj_t *
+cont_blackbox	src/menu/menu.c	/^lv_obj_t *cont_blackbox;$/;"	v	typeref:typename:lv_obj_t *
+cont_config	src/menu/menu.c	/^lv_obj_t *cont_config;$/;"	v	typeref:typename:lv_obj_t *
+cont_info	src/menu/menu.c	/^lv_obj_t *cont_info;$/;"	v	typeref:typename:lv_obj_t *
+conversionMatrix	src/menu/config.c	/^const float conversionMatrix[8][8] = {$/;"	v	typeref:typename:const float[8][8]
+count_noresponse	src/include/main.h	/^uint8_t count_noresponse = 0; \/\/There is no response of the transmitter$/;"	v	typeref:typename:uint8_t
+create_blackbox_menu	src/menu/blackbox.c	/^void create_blackbox_menu(void) {$/;"	f	typeref:typename:void
+create_config_menu	src/menu/config.c	/^void create_config_menu(void) {$/;"	f	typeref:typename:void
+create_info_menu	src/menu/info.c	/^void create_info_menu(void) {$/;"	f	typeref:typename:void
+create_menu_screen	src/menu/menu.c	/^void create_menu_screen(void)$/;"	f	typeref:typename:void
+create_menus	src/menu/menu.c	/^void create_menus()$/;"	f	typeref:typename:void
+create_work_screen	src/screen.c	/^void create_work_screen(const char *id_string)$/;"	f	typeref:typename:void
+current_screen	src/machine_state.c	/^Screen current_screen = {$/;"	v	typeref:typename:Screen
+data_offset	src/include/main.h	/^off_t data_offset = 0x6A000; \/\/mac address offset$/;"	v	typeref:typename:off_t
+decimal_flag	src/menu/config.c	/^static uint8_t decimal_flag = 0;$/;"	v	typeref:typename:uint8_t	file:
+decimal_index	src/menu/config.c	/^uint8_t decimal_index = 0;$/;"	v	typeref:typename:uint8_t
+decimal_values	src/menu/config.c	/^const char *decimal_values[] = {"1", "2", "3", "4"};$/;"	v	typeref:typename:const char * []
+decimal_values_int	src/menu/config.c	/^const uint8_t decimal_values_int[] = {0,1,2,3};$/;"	v	typeref:typename:const uint8_t[]
+device_connected	src/main.c	/^uint8_t device_connected = 0;$/;"	v	typeref:typename:uint8_t
+device_init	src/main.c	/^void device_init()$/;"	f	typeref:typename:void
+enable_usb_device_next	src/main.c	/^static int enable_usb_device_next(void)$/;"	f	typeref:typename:int	file:
+engineering_unit_flag	src/menu/config.c	/^static uint8_t engineering_unit_flag = 0;$/;"	v	typeref:typename:uint8_t	file:
+engineering_unit_index	src/menu/config.c	/^uint8_t engineering_unit_index = 0;$/;"	v	typeref:typename:uint8_t
+engineering_unit_values	src/menu/config.c	/^const char *engineering_unit_values[] = {"kg", "t","N", "kN", "kgf", "lb", "lbf", "kip"};$/;"	v	typeref:typename:const char * []
+engineering_unit_values_int	src/menu/config.c	/^const uint8_t engineering_unit_values_int[] =  {0,1,2,3,4,5,6,7};$/;"	v	typeref:typename:const uint8_t[]
+enter_deepSleep	src/utils.c	/^void enter_deepSleep(){$/;"	f	typeref:typename:void
+filter_config_values	src/menu/config.c	/^const char *filter_config_values[] = {"1", "2", "3", "4", "5",$/;"	v	typeref:typename:const char * []
+filter_index	src/menu/config.c	/^int filter_index = 0;$/;"	v	typeref:typename:int
+flag_broadcast	src/main.c	/^uint8_t flag_broadcast = 0;$/;"	v	typeref:typename:uint8_t
+flag_capacity	src/include/main.h	/^uint8_t flag_capacity = 0;$/;"	v	typeref:typename:uint8_t
+flag_grossnet	src/include/main.h	/^uint8_t flag_grossnet = 0; \/\/ 0 when is gross and 1 when it's net$/;"	v	typeref:typename:uint8_t
+flag_save_to_flash	src/main.c	/^uint8_t flag_save_to_flash = 0;$/;"	v	typeref:typename:uint8_t
+flag_sleep	src/include/main.h	/^uint8_t flag_sleep=0; \/\/ if 0 mcu is sleeping; if 1 is awaken$/;"	v	typeref:typename:uint8_t
+flash_device	src/include/main.h	/^const struct device *flash_device = DEVICE_DT_GET_OR_NULL(DT_CHOSEN(zephyr_flash_controller));$/;"	v	typeref:typename:const struct device *
+flash_thread	src/main.c	/^void flash_thread()$/;"	f	typeref:typename:void
+focus_callback	src/menu/menu.c	/^void focus_callback(lv_event_t *e)$/;"	f	typeref:typename:void
+font_dsc	src/fonts/montserrat_17.c	/^static const lv_font_fmt_txt_dsc_t font_dsc = {$/;"	v	typeref:typename:const lv_font_fmt_txt_dsc_t	file:
+font_dsc	src/fonts/montserrat_68.c	/^static const lv_font_fmt_txt_dsc_t font_dsc = {$/;"	v	typeref:typename:const lv_font_fmt_txt_dsc_t	file:
+function	src/main.c	/^    uint8_t function;$/;"	m	struct:btn	typeref:typename:uint8_t	file:
+get_current_screen	src/machine_state.c	/^LIST_SCREEN get_current_screen()$/;"	f	typeref:typename:LIST_SCREEN
+get_remote_configs	src/main.c	/^void get_remote_configs()$/;"	f	typeref:typename:void
+get_screen_status	src/machine_state.c	/^Screen get_screen_status(){$/;"	f	typeref:typename:Screen
+get_state_name	src/main.c	/^const char *get_state_name(MACHINE_STATE state)$/;"	f	typeref:typename:const char *
+get_unit_string	src/utils.c	/^const char* get_unit_string(int unit_value) {$/;"	f	typeref:typename:const char *
+glyph_bitmap	src/fonts/montserrat_17.c	/^static LV_ATTRIBUTE_LARGE_CONST const uint8_t glyph_bitmap[] = {$/;"	v	typeref:typename:LV_ATTRIBUTE_LARGE_CONST const uint8_t[]	file:
+glyph_bitmap	src/fonts/montserrat_68.c	/^static LV_ATTRIBUTE_LARGE_CONST const uint8_t glyph_bitmap[] = {$/;"	v	typeref:typename:LV_ATTRIBUTE_LARGE_CONST const uint8_t[]	file:
+glyph_dsc	src/fonts/montserrat_17.c	/^static const lv_font_fmt_txt_glyph_dsc_t glyph_dsc[] = {$/;"	v	typeref:typename:const lv_font_fmt_txt_glyph_dsc_t[]	file:
+glyph_dsc	src/fonts/montserrat_68.c	/^static const lv_font_fmt_txt_glyph_dsc_t glyph_dsc[] = {$/;"	v	typeref:typename:const lv_font_fmt_txt_glyph_dsc_t[]	file:
+gn_label	src/screen.c	/^lv_obj_t *gn_label;$/;"	v	typeref:typename:lv_obj_t *
+grossnet	src/main.c	/^    uint8_t grossnet;$/;"	m	struct:btn	typeref:typename:uint8_t	file:
+handheld_config_mode_index	src/menu/config.c	/^int handheld_config_mode_index = 0;$/;"	v	typeref:typename:int
+handheld_config_mode_values	src/menu/config.c	/^const char *handheld_config_mode_values[] = {"Off", "On"};$/;"	v	typeref:typename:const char * []
+heartbeat	src/screen.c	/^lv_obj_t *heartbeat;$/;"	v	typeref:typename:lv_obj_t *
+id_label	src/screen.c	/^lv_obj_t *id_label;$/;"	v	typeref:typename:lv_obj_t *
+id_string	src/include/main.h	/^char id_string[38] = {0};$/;"	v	typeref:typename:char[38]
+info_menu_screen_container	src/menu/info.c	/^lv_obj_t *info_menu_screen_container;$/;"	v	typeref:typename:lv_obj_t *
+init_adc	src/adc.c	/^void init_adc(void) {$/;"	f	typeref:typename:void
+init_styles	src/menu/menu_utils.c	/^void init_styles() {$/;"	f	typeref:typename:void
+init_switches	src/main.c	/^void init_switches()$/;"	f	typeref:typename:void
+label_decimal_config	src/menu/config.c	/^lv_obj_t *label_decimal_config;$/;"	v	typeref:typename:lv_obj_t *
+label_engineering_unit	src/menu/info.c	/^lv_obj_t *label_engineering_unit;$/;"	v	typeref:typename:lv_obj_t *
+label_engineering_unit_config	src/menu/config.c	/^lv_obj_t *label_engineering_unit_config;$/;"	v	typeref:typename:lv_obj_t *
+label_filter_config	src/menu/config.c	/^lv_obj_t *label_filter_config;$/;"	v	typeref:typename:lv_obj_t *
+label_firmware	src/menu/info.c	/^lv_obj_t *label_firmware;$/;"	v	typeref:typename:lv_obj_t *
+label_handheld_mode_config	src/menu/config.c	/^lv_obj_t *label_handheld_mode_config;$/;"	v	typeref:typename:lv_obj_t *
+label_header	src/menu/blackbox.c	/^lv_obj_t *label_header;$/;"	v	typeref:typename:lv_obj_t *
+label_load_cell	src/menu/info.c	/^lv_obj_t *label_load_cell;$/;"	v	typeref:typename:lv_obj_t *
+label_normal_capacity_alarm	src/menu/blackbox.c	/^lv_obj_t *label_normal_capacity_alarm;$/;"	v	typeref:typename:lv_obj_t *
+label_overload_100_110_alarm	src/menu/blackbox.c	/^lv_obj_t *label_overload_100_110_alarm;$/;"	v	typeref:typename:lv_obj_t *
+label_overload_over_110_alarm	src/menu/blackbox.c	/^lv_obj_t *label_overload_over_110_alarm;$/;"	v	typeref:typename:lv_obj_t *
+label_production_nr	src/menu/info.c	/^lv_obj_t *label_production_nr;$/;"	v	typeref:typename:lv_obj_t *
+label_tare	src/menu/info.c	/^lv_obj_t *label_tare;$/;"	v	typeref:typename:lv_obj_t *
+label_transmitter_mode_config	src/menu/config.c	/^lv_obj_t *label_transmitter_mode_config;$/;"	v	typeref:typename:lv_obj_t *
+label_uptime	src/menu/info.c	/^lv_obj_t *label_uptime;$/;"	v	typeref:typename:lv_obj_t *
+last_time	src/include/main.h	/^uint64_t last_time = 0;$/;"	v	typeref:typename:uint64_t
+load	src/include/main.h	/^float load = 0;$/;"	v	typeref:typename:float
+load_label	src/screen.c	/^lv_obj_t *load_label;$/;"	v	typeref:typename:lv_obj_t *
+load_unit	src/include/machine_state.h	/^    uint8_t load_unit;$/;"	m	struct:FlashData	typeref:typename:uint8_t
+logo	src/screen.c	/^lv_obj_t *logo;$/;"	v	typeref:typename:lv_obj_t *
+logo_hfn	src/include/logo_hfn.h	/^const lv_img_dsc_t logo_hfn = {$/;"	v	typeref:typename:const lv_img_dsc_t
+logo_hfn_map	src/include/logo_hfn.h	/^const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_LOGO_HFN uint8_t logo_hfn/;"	v	typeref:typename:const LV_ATTRIBUTE_MEM_ALIGN LV_ATTRIBUTE_LARGE_CONST LV_ATTRIBUTE_IMG_LOGO_HFN uint8_t[]
+lv_handler	src/screen.c	/^void lv_handler()$/;"	f	typeref:typename:void
+lvgl_init	src/screen.c	/^void lvgl_init(const char *id_string)$/;"	f	typeref:typename:void
+mac	src/include/machine_state.h	/^    uint8_t mac[4];$/;"	m	struct:FlashData	typeref:typename:uint8_t[4]
+mac_add	src/main.c	/^uint8_t mac_add[4] = {0};$/;"	v	typeref:typename:uint8_t[4]
+mac_id	src/main.c	/^int mac_id = 0;$/;"	v	typeref:typename:int
+main	src/main.c	/^int main()$/;"	f	typeref:typename:int
+main_menu_group	src/menu/menu.c	/^lv_group_t *main_menu_group;$/;"	v	typeref:typename:lv_group_t *
+main_page	src/menu/menu.c	/^lv_obj_t *main_page;$/;"	v	typeref:typename:lv_obj_t *
+max_capacity	src/main.c	/^char max_capacity[8] = {0};$/;"	v	typeref:typename:char[8]
+menu_buttons_cb	src/menu/menu.c	/^void menu_buttons_cb(uint32_t key)$/;"	f	typeref:typename:void
+menu_config_convert_load	src/menu/config.c	/^float menu_config_convert_load(float value)$/;"	f	typeref:typename:float
+menu_config_get_decimal	src/menu/config.c	/^int menu_config_get_decimal() {$/;"	f	typeref:typename:int
+menu_config_get_unit	src/menu/config.c	/^int menu_config_get_unit()$/;"	f	typeref:typename:int
+menu_screen_container	src/menu/menu.c	/^lv_obj_t *menu_screen_container;$/;"	v	typeref:typename:lv_obj_t *
+montserrat_17	src/fonts/montserrat_17.c	/^const lv_font_t montserrat_17 = {$/;"	v	typeref:typename:const lv_font_t
+montserrat_68	src/fonts/montserrat_68.c	/^const lv_font_t montserrat_68 = {$/;"	v	typeref:typename:const lv_font_t
+pairing_status	src/main.c	/^void pairing_status()$/;"	f	typeref:typename:void
+pilbat_label	src/screen.c	/^lv_obj_t *pilbat_label;$/;"	v	typeref:typename:lv_obj_t *
+pilbat_value	src/screen.c	/^lv_obj_t *pilbat_value;$/;"	v	typeref:typename:lv_obj_t *
+power	src/main.c	/^    uint8_t power;$/;"	m	struct:btn	typeref:typename:uint8_t	file:
+print_buffer	src/main.c	/^void print_buffer(uint8_t *buffer, size_t size)$/;"	f	typeref:typename:void
+print_flash	src/main.c	/^void print_flash() {$/;"	f	typeref:typename:void
+print_rssi_screen	src/main.c	/^void print_rssi_screen(int8_t rssi)$/;"	f	typeref:typename:void
+print_screen_clear	src/main.c	/^void print_screen_clear()$/;"	f	typeref:typename:void
+print_screen_data	src/main.c	/^void print_screen_data()$/;"	f	typeref:typename:void
+process_capacity	src/main.c	/^void process_capacity(uint8_t *payload, size_t size)$/;"	f	typeref:typename:void
+process_decimal	src/main.c	/^void process_decimal(uint8_t dec)$/;"	f	typeref:typename:void
+process_load	src/main.c	/^void process_load(const uint8_t *payload, size_t size)$/;"	f	typeref:typename:void
+process_rbat	src/main.c	/^void process_rbat(uint8_t *payload, uint8_t size)$/;"	f	typeref:typename:void
+process_unit	src/main.c	/^void process_unit(uint8_t unit)$/;"	f	typeref:typename:void
+pwm_backlight	src/include/main.h	/^const struct pwm_dt_spec pwm_backlight = PWM_DT_SPEC_GET(BACKLIGHT);$/;"	v	typeref:typename:const struct pwm_dt_spec
+pwm_buzzer	src/include/main.h	/^const struct pwm_dt_spec pwm_buzzer = PWM_DT_SPEC_GET(BUZZER);$/;"	v	typeref:typename:const struct pwm_dt_spec
+rbat_int	src/include/main.h	/^int rbat_int=0;$/;"	v	typeref:typename:int
+rbat_label	src/screen.c	/^lv_obj_t *rbat_label;$/;"	v	typeref:typename:lv_obj_t *
+rbat_value	src/screen.c	/^lv_obj_t *rbat_value;$/;"	v	typeref:typename:lv_obj_t *
+read_adc	src/adc.c	/^void read_adc()$/;"	f	typeref:typename:void
+read_flash	src/main.c	/^void read_flash()$/;"	f	typeref:typename:void
+reset_mac_address_pair	src/main.c	/^void reset_mac_address_pair()$/;"	f	typeref:typename:void
+rssi	src/include/main.h	/^int8_t rssi = 0;$/;"	v	typeref:typename:int8_t
+rssi_label	src/screen.c	/^lv_obj_t *rssi_label;$/;"	v	typeref:typename:lv_obj_t *
+rssi_string	src/include/main.h	/^char rssi_string[35];$/;"	v	typeref:typename:char[35]
+rssi_value	src/screen.c	/^lv_obj_t *rssi_value;$/;"	v	typeref:typename:lv_obj_t *
+rx_buf	src/include/main.h	/^uint8_t rx_buf[RECEIVE_BUFF_SIZE] = {0};$/;"	v	typeref:typename:uint8_t[]
+rx_size	src/include/main.h	/^uint8_t rx_size;$/;"	v	typeref:typename:uint8_t
+sample_usbd	src/main.c	/^static struct usbd_context *sample_usbd;$/;"	v	typeref:struct:usbd_context *	file:
+save_to_flash	src/main.c	/^void save_to_flash()$/;"	f	typeref:typename:void
+screen	src/include/machine_state.h	/^    LIST_SCREEN screen;$/;"	m	struct:__anonc76fa69a0208	typeref:typename:LIST_SCREEN
+screen	src/main.c	/^Screen screen;$/;"	v	typeref:typename:Screen
+screen_buttons_cb	src/screen.c	/^void screen_buttons_cb(int btn)$/;"	f	typeref:typename:void
+sensors_thread	src/main.c	/^void sensors_thread()$/;"	f	typeref:typename:void
+sequence	src/adc.c	/^struct adc_sequence sequence = {$/;"	v	typeref:struct:adc_sequence
+set_bbat_value	src/screen.c	/^void set_bbat_value(double value)$/;"	f	typeref:typename:void
+set_capacity_value	src/screen.c	/^void set_capacity_value(double value_f)$/;"	f	typeref:typename:void
+set_capacity_value_err	src/screen.c	/^void set_capacity_value_err() {$/;"	f	typeref:typename:void
+set_capacity_value_null	src/screen.c	/^void set_capacity_value_null() {$/;"	f	typeref:typename:void
+set_cell_label_text	src/screen.c	/^void set_cell_label_text(char *value)$/;"	f	typeref:typename:void
+set_device_connected	src/main.c	/^void set_device_connected()$/;"	f	typeref:typename:void
+set_gn_label_text	src/screen.c	/^void set_gn_label_text(uint8_t net)$/;"	f	typeref:typename:void
+set_id_label_text	src/screen.c	/^void set_id_label_text(char *value)$/;"	f	typeref:typename:void
+set_load_unit_value	src/screen.c	/^void set_load_unit_value(uint8_t value)$/;"	f	typeref:typename:void
+set_load_value	src/screen.c	/^void set_load_value(float value, uint8_t decimal, uint8_t unit)$/;"	f	typeref:typename:void
+set_load_value_null	src/screen.c	/^void set_load_value_null() {$/;"	f	typeref:typename:void
+set_pilbat_value	src/screen.c	/^void set_pilbat_value(double value)$/;"	f	typeref:typename:void
+set_rbat_value	src/screen.c	/^void set_rbat_value(char *value)$/;"	f	typeref:typename:void
+set_rbat_value_null	src/screen.c	/^void set_rbat_value_null()$/;"	f	typeref:typename:void
+set_rbat_value_raw	src/screen.c	/^void set_rbat_value_raw(int value)$/;"	f	typeref:typename:void
+set_rssi_label_value	src/screen.c	/^void set_rssi_label_value(uint8_t value)$/;"	f	typeref:typename:void
+set_rssi_value_null	src/screen.c	/^void set_rssi_value_null()$/;"	f	typeref:typename:void
+show_blackbox_menu	src/menu/blackbox.c	/^void show_blackbox_menu(void)$/;"	f	typeref:typename:void
+show_config_menu	src/menu/config.c	/^void show_config_menu(void) {$/;"	f	typeref:typename:void
+show_info_menu	src/menu/info.c	/^void show_info_menu(void) {$/;"	f	typeref:typename:void
+show_menu_screen	src/menu/menu.c	/^void show_menu_screen(void)$/;"	f	typeref:typename:void
+show_work_screen	src/screen.c	/^void show_work_screen(void) {$/;"	f	typeref:typename:void
+stack_cont	src/menu/menu.c	/^lv_obj_t *stack_cont;$/;"	v	typeref:typename:lv_obj_t *
+state	src/include/machine_state.h	/^typedef enum state {$/;"	g
+state_names	src/include/main.h	/^const char* state_names[MAX_STATE] = {$/;"	v	typeref:typename:const char * []
+style_amber	src/screen.c	/^lv_style_t style_amber;$/;"	v	typeref:typename:lv_style_t
+style_black	src/screen.c	/^lv_style_t style_black;$/;"	v	typeref:typename:lv_style_t
+style_blue	src/screen.c	/^lv_style_t style_blue;$/;"	v	typeref:typename:lv_style_t
+style_default	src/menu/menu_utils.c	/^lv_style_t style_default;   \/\/ Default style for non-selected items$/;"	v	typeref:typename:lv_style_t
+style_red	src/screen.c	/^lv_style_t style_red;$/;"	v	typeref:typename:lv_style_t
+style_selected	src/menu/menu_utils.c	/^lv_style_t style_selected;$/;"	v	typeref:typename:lv_style_t
+sw_backlight	src/include/main.h	/^const struct gpio_dt_spec sw_backlight = GPIO_DT_SPEC_GET(SW1,gpios);$/;"	v	typeref:typename:const struct gpio_dt_spec
+sw_backlight_pressed	src/main.c	/^void sw_backlight_pressed(const struct device *dev, struct gpio_callback *cb,$/;"	f	typeref:typename:void
+sw_function	src/include/main.h	/^const struct gpio_dt_spec sw_function = GPIO_DT_SPEC_GET(SW0,gpios);$/;"	v	typeref:typename:const struct gpio_dt_spec
+sw_function_pressed	src/main.c	/^void sw_function_pressed(const struct device *dev, struct gpio_callback *cb,$/;"	f	typeref:typename:void
+sw_grossnet	src/include/main.h	/^const struct gpio_dt_spec sw_grossnet = GPIO_DT_SPEC_GET(SW4,gpios);$/;"	v	typeref:typename:const struct gpio_dt_spec
+sw_grossnet_pressed	src/main.c	/^void sw_grossnet_pressed(const struct device *dev, struct gpio_callback *cb,$/;"	f	typeref:typename:void
+sw_onoff	src/include/main.h	/^const struct gpio_dt_spec sw_onoff = GPIO_DT_SPEC_GET(SW3,gpios);$/;"	v	typeref:typename:const struct gpio_dt_spec
+sw_onoff_pressed	src/main.c	/^void sw_onoff_pressed(const struct device *dev, struct gpio_callback *cb,$/;"	f	typeref:typename:void
+sw_tare	src/include/main.h	/^const struct gpio_dt_spec sw_tare = GPIO_DT_SPEC_GET(SW2,gpios);$/;"	v	typeref:typename:const struct gpio_dt_spec
+sw_tare_pressed	src/main.c	/^void sw_tare_pressed(const struct device *dev, struct gpio_callback *cb,$/;"	f	typeref:typename:void
+tare	src/include/machine_state.h	/^    float tare;$/;"	m	struct:FlashData	typeref:typename:float
+tare	src/main.c	/^    uint8_t tare;$/;"	m	struct:btn	typeref:typename:uint8_t	file:
+toogle_heartbeat	src/screen.c	/^void toogle_heartbeat()$/;"	f	typeref:typename:void
+transmitter_config_mode_index	src/menu/config.c	/^int transmitter_config_mode_index = 0;$/;"	v	typeref:typename:int
+transmitter_config_mode_values	src/menu/config.c	/^const char *transmitter_config_mode_values[] = {"Off", "On"};$/;"	v	typeref:typename:const char * []
+uart	src/include/main.h	/^const struct device *uart = DEVICE_DT_GET(DT_NODELABEL(usart1));$/;"	v	typeref:typename:const struct device *
+uart_cb	src/main.c	/^static void uart_cb(const struct device *dev, struct uart_event *evt, void *user_data)$/;"	f	typeref:typename:void	file:
+uart_cfg	src/include/main.h	/^const struct uart_config uart_cfg = {$/;"	v	typeref:typename:const struct uart_config
+unit_label	src/screen.c	/^lv_obj_t *unit_label;$/;"	v	typeref:typename:lv_obj_t *
+update_blackbox_menu_values	src/menu/blackbox.c	/^void update_blackbox_menu_values()$/;"	f	typeref:typename:void
+update_config_value	src/menu/config.c	/^void update_config_value(lv_obj_t *focused_obj) {$/;"	f	typeref:typename:void
+update_info_menu_values	src/menu/info.c	/^void update_info_menu_values()$/;"	f	typeref:typename:void
+upt_command	src/utils.c	/^void upt_command(uint8_t *array, uint8_t length, char command_char){$/;"	f	typeref:typename:void
+upt_eeprom_command	src/utils.c	/^void upt_eeprom_command(uint8_t *array, uint8_t length, char command_char){$/;"	f	typeref:typename:void
+upt_maddress	src/utils.c	/^void upt_maddress(uint8_t *array, uint8_t *mac_add){$/;"	f	typeref:typename:void
+usb_thread	src/main.c	/^void usb_thread()$/;"	f	typeref:typename:void
+val_percent	src/adc.c	/^double val_percent = 0;$/;"	v	typeref:typename:double
+val_volt	src/adc.c	/^double val_volt = 0;$/;"	v	typeref:typename:double
+valid_macaddres	src/main.c	/^uint8_t valid_macaddres(uint8_t *value)$/;"	f	typeref:typename:uint8_t
+voltage_divider_factor	src/adc.c	/^float voltage_divider_factor =  (R1 + R2) \/ R2;$/;"	v	typeref:typename:float
+voltage_to_soc_lipo	src/adc.c	/^float voltage_to_soc_lipo(float voltage) {$/;"	f	typeref:typename:float
+voltage_to_soc_pil	src/adc.c	/^float voltage_to_soc_pil(float voltage) {$/;"	f	typeref:typename:float
+work_screen_container	src/screen.c	/^lv_obj_t *work_screen_container;$/;"	v	typeref:typename:lv_obj_t *
+zigbee_delay	src/main.c	/^uint8_t zigbee_delay = 0;$/;"	v	typeref:typename:uint8_t
+zigbee_send	src/main.c	/^void zigbee_send(uint8_t *buffer, size_t size)$/;"	f	typeref:typename:void
+zigbee_thread	src/main.c	/^void zigbee_thread()$/;"	f	typeref:typename:void

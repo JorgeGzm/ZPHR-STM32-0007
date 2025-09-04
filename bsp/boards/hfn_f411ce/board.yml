@@ -1,0 +1,6 @@
+board:
+  name: hfn_f411ce
+  full_name: hfn f411ce V2.0
+  vendor: hfn
+  socs:
+    - name: stm32f411xe

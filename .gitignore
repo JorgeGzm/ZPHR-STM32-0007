@@ -1,0 +1,8 @@
+build/
+zephyr/
+tools/
+modules/
+bootloader/
+.west/
+.venv/
+zephyr-sdk-0.17.0

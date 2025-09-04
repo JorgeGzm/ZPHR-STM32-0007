@@ -1,0 +1,40 @@
+source "samples/subsys/usb/common/Kconfig.sample_usbd"
+
+
+menu "HFN Zigbee Configuration"
+
+config HFN_DEBUG_DEBOUNCE
+    bool "Enable debounce buttons message"
+    default n
+    help
+      "Enable debounce buttons message"
+
+config HFN_ZIGBEE_DEBUG_TX
+    bool "Enable zigbee tx messages"
+    default n
+    help
+      Enable zigbee tx messages
+      
+config HFN_ZIGBEE_DEBUG_RX
+    bool "Enable zigbee tx messages"
+    default n
+    help
+      Enable zigbee tx messages
+      
+config HFN_ENABLE_FLASH_READ_PROTECTION
+    bool "Enable flash read protection"
+    default n
+    help
+      Enable flash read protection to disable you need use
+      the stm32cubeprogrammer, read the OPT bytes and set to 0xAA the RDP register.
+      
+config HFN_ENABLE_TEST_FLASH_MEM
+    bool "Enable test flash memory"
+    default n
+    help
+      Enable test flash memory
+endmenu
+
+menu "Zephyr Kernel"
+source "Kconfig.zephyr"
+endmenu

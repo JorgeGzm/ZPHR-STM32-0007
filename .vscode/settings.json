@@ -1,0 +1,142 @@
+{
+    // ===========================================
+    // Python Env config
+    // ===========================================
+
+    "python.defaultInterpreterPath": "${env:HOME}/zephyrproject/.venv/bin/python3",
+    "python.terminal.activateEnvironment": true,
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "terminal.integrated.env.linux": {
+        "ZEPHYR_BASE": "${env:HOME}/zephyrproject/zephyr",
+        "ZEPHYR_SDK_INSTALL_DIR": "${env:HOME}/zephyr-sdk-0.17.0"
+    },
+
+    // ===========================================
+    // CORTEX-DEBUG SETTINGS
+    // ===========================================
+    
+    "cortex-debug.armToolchainPath": "${env:HOME}/zephyr-sdk-0.17.0/arm-zephyr-eabi/bin",
+    "cortex-debug.openocdPath": "${env:HOME}/zephyr-sdk-0.17.0/sysroots/x86_64-pokysdk-linux/usr/bin/openocd",
+    "cortex-debug.gdbPath": "${env:HOME}/zephyr-sdk-0.17.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb",
+    "cortex-debug.armToolchainPrefix": "arm-zephyr-eabi",
+    "cortex-debug.variableUseNaturalFormat": true,
+
+    // ===========================================
+    // C/C++ VISUAL SETTINGS
+    // ===========================================
+
+    "C_Cpp.default.forcedInclude": [
+        "${workspaceFolder}/build/autoconf.h",
+        "${workspaceFolder}/build/zephyr/include/generated/autoconf.h",
+    ],
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/**",
+        "${ZEPHYR_BASE}/include/**"
+    ],
+    "C_Cpp.default.mergeConfigurations": true,
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json",
+    "C_Cpp.default.cStandard": "c11",
+    "C_Cpp.default.cppStandard": "c++20",
+    "C_Cpp.default.intelliSenseMode": "linux-gcc-x64",
+    // C/C++ inactive code style settings
+    "C_Cpp.inactiveRegionOpacity": 1,
+    "C_Cpp.inactiveRegionBackgroundColor": "#000000",
+    "C_Cpp.inactiveRegionForegroundColor": "#ffffff",
+
+    // ===========================================
+    // Editor
+    // ===========================================
+
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "terminal.integrated.scrollback": 50000,
+
+    // ===========================================
+    // ===========================================
+
+    "files.associations": {
+      "flash_map.h": "c",
+      "pwm.h": "c",
+      "screen.h": "c",
+      "main.h": "c",
+      "utils.h": "c",
+      "lvgl.h": "c",
+      "machine_state.h": "c",
+      "montserrat_68.h": "c",
+      "*.conf": "bitbake",
+      "*.inc": "bitbake",
+      "config.h": "c",
+      "display.h": "c",
+      "kernel.h": "c",
+      "uart.h": "c",
+      "math.h": "c",
+      "stdio.h": "c",
+      "usbd.h": "c",
+      "zigbee.h": "c",
+      "cstring": "c",
+      "devicetree.h": "c",
+      "*.vscode-ctags": "c",
+      "montserrat_17.h": "c",
+      "atomic": "c",
+      "settings.h": "c",
+      "display_manager.h": "c",
+      "adc.h": "c",
+      "buzzer.h": "c",
+      "logo_hfn.h": "c",
+      "device.h": "c",
+      "config_screen.h": "c",
+      "stdint.h": "c",
+      "flash.h": "c",
+      "zigbee_config.h": "c",
+      "usb_device.h": "c",
+      "sample_usbd.h": "c",
+      "stdlib.h": "c",
+      "compare": "c",
+      "input.h": "c",
+      "random": "c",
+      "bit": "c",
+      "cstddef": "c",
+      "string": "c",
+      "optional": "c",
+      "limits": "c",
+      "memory": "c",
+      "new": "c",
+      "functional": "c",
+      "ranges": "c",
+      "ratio": "c",
+      "system_error": "c",
+      "array": "c",
+      "tuple": "c",
+      "type_traits": "c",
+      "utility": "c",
+      "istream": "c",
+      "ostream": "c",
+      "main_screen.h": "c",
+      "input-event-codes.h": "c",
+      "main_screen_ex1.h": "c"
+    },
+    "search.exclude": {
+        "**/.west/**": true,
+        "**/modules/**": true,
+        "**/patches/**": true,
+        "**/scripts/**": true,
+        "**/tools/**": true,
+        "**/venv/**": true
+      },
+      "files.watcherExclude": {
+        "**/.west/**": true,
+        "**/modules/**": true,
+        "**/patches/**": true,
+        "**/scripts/**": true,
+        "**/tools/**": true,
+        "**/venv/**": true
+      },
+      "python.autoComplete.extraPaths": [
+        "${workspaceFolder}/sources/poky/bitbake/lib",
+        "${workspaceFolder}/sources/poky/meta/lib"
+      ],
+      "python.analysis.extraPaths": [
+        "${workspaceFolder}/sources/poky/bitbake/lib",
+        "${workspaceFolder}/sources/poky/meta/lib"
+      ],
+}

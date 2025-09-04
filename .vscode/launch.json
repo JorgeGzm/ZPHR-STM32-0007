@@ -1,0 +1,45 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "J-Link - Debug",
+            "device": "stm32f411ce",
+            "cwd": "${workspaceFolder}",
+            "executable": "build/zephyr/zephyr.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "runToEntryPoint": "main",
+            "servertype": "jlink",
+            "liveWatch": {
+                "enabled": true,
+                "samplesPerSecond": 4
+            },
+            "preLaunchTask": "build_hfn_f411ce",
+        },
+        {
+            "name": "ST-Link - Debug",
+            "device": "stm32f411ce",
+            "cwd": "${workspaceFolder}",
+            "executable": "build/zephyr/zephyr.elf",
+            "interface": "swd",
+            "request": "launch",
+            "type": "cortex-debug",
+            "runToEntryPoint": "main",
+            "servertype": "stlink",
+            "serverArgs": [
+                "-s",
+                "-m",
+                "0",
+                "-k",
+                "--frequency",
+                "21000"
+            ],
+            "liveWatch": {
+                "enabled": true,
+                "samplesPerSecond": 4
+            },
+            "preLaunchTask": "build_blackpill_f411ce",
+            "showDevDebugOutput": "raw"
+        },
+    ]
+}

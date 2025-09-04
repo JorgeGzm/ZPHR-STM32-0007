@@ -1,0 +1,8 @@
+# main version number: (major, minor, tweak, extra)
+VERSION_MAJOR = 5
+VERSION_MINOR = 10
+PATCHLEVEL = 0
+EXTRAVERSION =
+
+# VERSION_TWEAK is used for the kernel version string
+VERSION_TWEAK = 0

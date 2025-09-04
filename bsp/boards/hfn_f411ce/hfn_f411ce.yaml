@@ -1,0 +1,16 @@
+identifier: hfn_f411ce
+name: HFN F411ce V2.0
+type: mcu
+arch: arm
+toolchain:
+  - zephyr
+  - gnuarmemb
+  - xtools
+supported:
+  - counter
+  - spi
+  - i2c
+  - uart
+  - pwm
+  - adc
+vendor: hfn

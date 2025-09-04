@@ -1,0 +1,64 @@
+{
+  	"version": "2.0.0",
+	"options": {
+		"env": {
+			"VIRTUAL_ENV": "${env:HOME}/zephyrproject/.venv/bin",
+			"ZEPHYR_BASE": "${env:HOME}/zephyrproject/zephyr"
+		}
+	},
+  	"tasks": [
+    {
+      "label": "build_hfn_f411ce",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-c",
+		"${VIRTUAL_ENV}/west build -b hfn_f411ce -p -- -DBOARD_ROOT=${workspaceFolder}/bsp -DDTC_OVERLAY_FILE=bsp/hfn_f411ce.overlay"
+      ],
+			"icon": {
+				"id": "gear",
+				"color": "terminal.ansiYellow"
+			},
+    },
+    {
+      "label": "west_flash_jlink",
+      "type": "shell",
+      "command": "${VIRTUAL_ENV}/west",
+			"args": [
+				"flash",
+				"--runner",
+				"jlink"
+			],
+      "icon": {
+				"id": "zap",
+				"color": "terminal.ansiYellow"
+			},
+    },
+    {
+			"label": "west_flash_stlink",
+			"type": "shell",
+			"command": "${VIRTUAL_ENV}/west",
+			"args": [
+				"flash",
+				"--runner",
+				"stm32cubeprogrammer"
+			],
+			"icon": {
+				"id": "zap",
+				"color": "terminal.ansiYellow"
+			},
+		},
+    {
+			"label": "seq_build_debug_and_flash",
+			"dependsOrder": "sequence",
+			"dependsOn": [
+				"build_blackpill_f411ce",
+				"west_flash_jlink"
+			],
+			"icon": {
+				"id": "github-action",
+				"color": "terminal.ansiYellow"
+			},
+		}
+  ]
+}

@@ -1,0 +1,185 @@
+#include <zephyr/dt-bindings/adc/adc.h>
+#include <zephyr/dt-bindings/pinctrl/stm32-pinctrl-common.h>
+#include <zephyr/dt-bindings/mipi_dbi/mipi_dbi.h>
+
+/ {
+
+    chosen {
+       zephyr,console = &usart2;
+       zephyr,shell-uart = &usart2;
+        zephyr,display = &st7789v;
+        zephyr,flash = &flash0;
+    };
+
+    buttons: buttons {
+        compatible = "gpio-keys";
+        debounce-interval-ms = <100>;
+        polling-mode;
+        
+        button_function: button_function {
+            gpios = <&gpiob 6 GPIO_ACTIVE_LOW>;
+            zephyr,code = <INPUT_KEY_DOWN>;
+        };
+
+        button_backlight: button_backlight {
+            gpios = <&gpiob 5 GPIO_ACTIVE_LOW>;
+            zephyr,code = <INPUT_KEY_UP>;
+        };
+
+        button_tare: button_tare {
+            gpios = <&gpiob 3 GPIO_ACTIVE_LOW>;
+            zephyr,code = <INPUT_KEY_LEFT>;
+        };
+
+        button_onoff: button_onoff {
+            gpios = <&gpiob 8 GPIO_ACTIVE_LOW>;
+            zephyr,code = <INPUT_KEY_ENTER>;
+        };
+
+        button_grossnet: button_grossnet {
+            gpios = <&gpiob 4 GPIO_ACTIVE_LOW>;
+            zephyr,code = <INPUT_KEY_RIGHT>;
+        };
+    };
+
+    longpress: longpress {
+		input = <&buttons>;
+		compatible = "zephyr,input-longpress";
+		input-codes = <INPUT_KEY_LEFT>, <INPUT_KEY_RIGHT>;
+		long-codes = <INPUT_KEY_R>, <INPUT_KEY_RIGHTSHIFT>;
+		long-delay-ms = <1500>;
+	};
+
+    pwmleds: pwmleds {
+        compatible = "pwm-leds";
+        status = "okay";
+
+        backlight: backlight {
+            pwms = <&pwm4 2 200000 PWM_POLARITY_NORMAL>;  // 5kHz = 200µs = 200000ns
+        };
+
+        buzzer: buzzer {
+            pwms = <&pwm4 4 250000 PWM_POLARITY_NORMAL>;  // 4kHz = 250µs = 250000ns
+        };
+    };
+
+    aliases {
+        pwm-led0 = &backlight;
+        pwm-led1 = &buzzer;
+    };
+
+    zephyr,user {
+        io-channels = <&adc1 0>, <&adc1 1>;
+    };
+
+    gpio_keys {
+        status = "disabled";
+    };
+
+    mipi_dbi {
+        compatible = "zephyr,mipi-dbi-spi";
+        status = "okay";
+        dc-gpios = <&gpiob 0 GPIO_ACTIVE_HIGH>;
+        reset-gpios = <&gpiob 1 GPIO_ACTIVE_LOW>;
+        spi-dev = <&spi1>;
+        write-only;
+        #address-cells = <1>;
+        #size-cells = <0>;
+
+        st7789v: st7789v@0 {
+            compatible = "sitronix,st7789v";
+            status = "okay";
+            reg = <0>;
+            mipi-mode = <MIPI_DBI_MODE_SPI_4WIRE>;
+            mipi-max-frequency = <32000000>;
+            
+            width = <240>;
+            height = <320>;
+            x-offset = <0>;
+            y-offset = <0>;
+            
+            vcom = <0x28>;
+            gctrl = <0x35>;
+            vrhs = <0x10>;
+            vdvs = <0x20>;
+            mdac = <0x08>;
+            gamma = <0x01>;
+            colmod = <0x55>;
+            lcm = <0x0C>;
+            inversion-off;
+            
+            porch-param = [0C 0C 00 33 33];
+            cmd2en-param = [5A 69 02 01];
+            pwctrl1-param = [A4 A1];
+            pvgam-param = [D0 00 02 07 0A 28 32 44 42 06 0E 12 14 17];
+            nvgam-param = [D0 00 02 07 0A 28 31 54 47 0E 1C 17 1B 1E];
+            ram-param = [00 E0];
+            rgb-param = [CD 08 14];
+        };
+    };
+};
+
+&zephyr_udc0 {
+    cdc_acm_uart0: cdc_acm_uart0 {
+        compatible = "zephyr,cdc-acm-uart";
+    };
+};
+
+&pwm4 {
+    status = "okay";
+    pinctrl-0 = <&tim4_ch2_pb7 &tim4_ch4_pb9>;
+};
+
+&adc1 {
+    pinctrl-0 = <&adc1_in0_pa0 &adc1_in1_pa1>;
+    pinctrl-names = "default";
+    status = "okay";
+};
+
+&adc1_in0_pa0 {
+    pinmux = <STM32_PINMUX('A', 0, ANALOG)>;
+};
+
+&adc1_in1_pa1 {
+    pinmux = <STM32_PINMUX('A', 1, ANALOG)>;
+};
+
+&dma2 {
+    status = "okay";
+};
+
+&usart2 {
+    pinctrl-0 = <&usart2_tx_pa2>;
+    pinctrl-names = "default";
+    status = "okay";
+    current-speed = <115200>;
+};
+
+&usart1 {
+    dmas = <&dma2 7 4 0x28440 0x03>,
+           <&dma2 2 4 0x28480 0x03>;
+    dma-names = "tx", "rx";
+    status = "okay";
+};
+
+&spi1 {
+    status = "okay";
+    cs-gpios = <&gpioa 4 GPIO_ACTIVE_LOW>;
+};
+
+&flash0 {
+    partitions {
+        compatible = "fixed-partitions";
+        #address-cells = <1>;
+        #size-cells = <1>;
+
+        slot0_partition: partition@0 {
+            label = "image-0";
+            reg = <0x00000000 DT_SIZE_K(384)>;
+        };
+        storage_partition: partition@60000 {
+            label = "storage";
+            reg = <0x00060000 DT_SIZE_K(128)>;
+        };
+    };
+};
