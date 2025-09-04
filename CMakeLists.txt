@@ -21,7 +21,8 @@ target_sources(app PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/usb_cdc.c
     ${CMAKE_CURRENT_SOURCE_DIR}/src/buzzer.c
     ${CMAKE_CURRENT_SOURCE_DIR}/src/display_manager.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/screen/main_screen_ex1.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/screen/basic_widgets.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/screen/basic_events.c
     ${CMAKE_CURRENT_SOURCE_DIR}/src/screen/main_screen.c
 )
 

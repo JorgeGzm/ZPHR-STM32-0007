@@ -10,5 +10,5 @@
 
 # Peripherals
 
-* Display ST7789v
-* touch
+* Display: ST7789v
+* sensor Touch: XPT2046

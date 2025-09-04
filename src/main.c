@@ -4,7 +4,7 @@
 #include "buzzer.h"
 #include "display_manager.h"
 
-#include "screen/main_screen_ex1.h"
+#include "screen/basic_widgets.h"
 #include "screen/main_screen.h"
 
 #include <zephyr/bindesc.h>
@@ -69,14 +69,14 @@ int main(void)
 
     display_init_screens();
     
-    #if 1
+    #if 0
     /* basic screen demo */
     main_screen_create();
     main_screen_show();
     #endif
 
-    #if 0
-    screen_ex1();
+    #if 1
+    basic_widgets_ex1();
     #endif
 
     while (true)
