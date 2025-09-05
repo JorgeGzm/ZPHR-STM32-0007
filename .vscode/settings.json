@@ -113,7 +113,8 @@
       "ostream": "c",
       "main_screen.h": "c",
       "input-event-codes.h": "c",
-      "main_screen_ex1.h": "c"
+      "main_screen_ex1.h": "c",
+      "numbers": "c"
     },
     "search.exclude": {
         "**/.west/**": true,

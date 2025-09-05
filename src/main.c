@@ -5,6 +5,7 @@
 #include "display_manager.h"
 
 #include "screen/basic_widgets.h"
+#include "screen/basic_events.h"
 #include "screen/main_screen.h"
 
 #include <zephyr/bindesc.h>
@@ -13,41 +14,41 @@
 #define STACKSIZE 2048
 #define PRIORITY  7
 
-static void button_input_callback(struct input_event *evt, void *user_data);
+// static void button_input_callback(struct input_event *evt, void *user_data);
 static void adc_thread(void);
 
-INPUT_CALLBACK_DEFINE(NULL, button_input_callback, 0);
+// INPUT_CALLBACK_DEFINE(NULL, button_input_callback, 0);
 
-static void button_input_callback(struct input_event *evt, void *user_data)
-{
-    if (evt->value == 1) // Button pressed
-    {
-        #if defined(CONFIG_HFN_DEBUG_DEBOUNCE)
-        printk("input event: dev=%-16s type=%2x code=%3d value=%d\n",
-        evt->dev ? evt->dev->name : "NULL", evt->type, evt->code, evt->value);
-        #endif
+// static void button_input_callback(struct input_event *evt, void *user_data)
+// {
+//     if (evt->value == 1) // Button pressed
+//     {
+//         #if defined(CONFIG_HFN_DEBUG_DEBOUNCE)
+//         printk("input event: dev=%-16s type=%2x code=%3d value=%d\n",
+//         evt->dev ? evt->dev->name : "NULL", evt->type, evt->code, evt->value);
+//         #endif
 
-        switch (evt->code) {
-        case INPUT_KEY_DOWN: // Function button
-            break;
-        case INPUT_KEY_UP: // Backlight button
-            break;
-        case INPUT_KEY_LEFT: // Tare button
-            break;
-        case INPUT_KEY_R: // Tare button long press
-            break;
-        case INPUT_KEY_ENTER: // On/Off button
-            break;
-        case INPUT_KEY_RIGHT: // Gross/Net button
-            break;
-        case INPUT_KEY_RIGHTSHIFT: // Gross/Net button long press
-            break;
-        default:
-            printk("Unknown button code: %d\n", evt->code);
-            break;
-        }
-    }
-}
+//         switch (evt->code) {
+//         case INPUT_KEY_DOWN: // Function button
+//             break;
+//         case INPUT_KEY_UP: // Backlight button
+//             break;
+//         case INPUT_KEY_LEFT: // Tare button
+//             break;
+//         case INPUT_KEY_R: // Tare button long press
+//             break;
+//         case INPUT_KEY_ENTER: // On/Off button
+//             break;
+//         case INPUT_KEY_RIGHT: // Gross/Net button
+//             break;
+//         case INPUT_KEY_RIGHTSHIFT: // Gross/Net button long press
+//             break;
+//         default:
+//             printk("Unknown button code: %d\n", evt->code);
+//             break;
+//         }
+//     }
+// }
 
 static void adc_thread(void)
 {
@@ -76,13 +77,15 @@ int main(void)
     #endif
 
     #if 1
-    basic_widgets_ex1();
+    // basic_widgets_ex1();
+    basic_widgets_events_ex2();
+    
     #endif
 
     while (true)
     {
         display_update();
-        k_msleep(1000);
+        k_msleep(50);
     }
 
     return 0;
