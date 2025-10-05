@@ -10,5 +10,5 @@
 
 # Peripherals
 
-* Display: ST7789v
-* sensor Touch: XPT2046
+* Display: ILI9341 (320*240)
+* sensor Touch: FT6236
