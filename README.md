@@ -5,8 +5,8 @@
 
 # Zephyr
 
-* Zephyr Version: v4.2.0
-* Zephyr SDK: v0.17.2
+* Zephyr Version: v4.3.0
+* Zephyr SDK: v0.17.4
 
 # Peripherals
 
