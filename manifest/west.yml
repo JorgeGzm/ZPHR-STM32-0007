@@ -1,0 +1,28 @@
+manifest:
+  self:
+    path: manifest
+
+  remotes:
+    - name: zephyrproject-rtos
+      url-base: https://github.com/zephyrproject-rtos
+    - name: JorgeGzm
+      url-base: https://github.com/JorgeGzm
+
+  projects:
+    - name: zephyr
+      remote: zephyrproject-rtos
+      revision: v4.3.0
+      import:
+        # By using name-allowlist we can clone only the modules that are
+        # strictly needed by the application.
+        name-allowlist:
+          - cmsis                # ARM Cortex-A/R headers
+          - cmsis_6              # ARM Cortex-M headers (CMSIS 6)
+          - hal_stm32            # STM32 HAL
+          - picolibc             # C library
+          - lvgl                 # LVGL graphics library
+
+    - name: zlib
+      remote: JorgeGzm
+      revision: main
+      path: zlib

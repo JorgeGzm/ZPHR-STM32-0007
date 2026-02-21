@@ -1,8 +1,9 @@
+# SPDX-License-Identifier: Apache-2.0
+
 cmake_minimum_required(VERSION 3.20.0)
 
-# Encontrar o Zephyr e configurar o projeto
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
-project(indicador-zigbee)
+project(ZPHR-STM32-0007)
 
 # Incluir configurações comuns do subsistema USB do Zephyr
 include(${ZEPHYR_BASE}/samples/subsys/usb/common/common.cmake)
@@ -25,5 +26,3 @@ target_sources(app PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/screen/basic_events.c
     ${CMAKE_CURRENT_SOURCE_DIR}/src/screen/main_screen.c
 )
-
-set(LVGL_DIR ${ZEPHYR_BASE}/modules/lib/gui/lvgl)

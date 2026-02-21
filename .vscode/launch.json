@@ -2,10 +2,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "J-Link - Debug",
+            "name": "J-Link",
             "device": "stm32f411ce",
             "cwd": "${workspaceFolder}",
-            "executable": "build/zephyr/zephyr.elf",
+            "executable": "app/build/zephyr/zephyr.elf",
             "request": "launch",
             "type": "cortex-debug",
             "runToEntryPoint": "main",
@@ -14,13 +14,13 @@
                 "enabled": true,
                 "samplesPerSecond": 4
             },
-            "preLaunchTask": "build_hfn_f411ce",
+            "preLaunchTask": "app_build",
         },
         {
-            "name": "ST-Link - Debug",
+            "name": "ST-Link",
             "device": "stm32f411ce",
             "cwd": "${workspaceFolder}",
-            "executable": "build/zephyr/zephyr.elf",
+            "executable": "app/build/zephyr/zephyr.elf",
             "interface": "swd",
             "request": "launch",
             "type": "cortex-debug",
@@ -38,7 +38,7 @@
                 "enabled": true,
                 "samplesPerSecond": 4
             },
-            "preLaunchTask": "build_blackpill_f411ce",
+            "preLaunchTask": "app_build",
             "showDevDebugOutput": "raw"
         },
     ]
