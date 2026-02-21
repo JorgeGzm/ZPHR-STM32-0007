@@ -157,6 +157,25 @@
 &spi1 {
     status = "okay";
     cs-gpios = <&gpioa 4 GPIO_ACTIVE_LOW>;
+
+    w25q64: w25q64@0 {
+        compatible = "jedec,spi-nor";
+        reg = <0>;
+        spi-max-frequency = <40000000>;
+        jedec-id = [ef 40 17];
+        size = <DT_SIZE_M(64)>;
+
+        partitions {
+            compatible = "fixed-partitions";
+            #address-cells = <1>;
+            #size-cells = <1>;
+
+            storage_partition: partition@0 {
+                label = "storage";
+                reg = <0x00000000 DT_SIZE_M(8)>;
+            };
+        };
+    };
 };
 
 &flash0 {
@@ -167,11 +186,7 @@
 
         slot0_partition: partition@0 {
             label = "image-0";
-            reg = <0x00000000 DT_SIZE_K(384)>;
-        };
-        storage_partition: partition@60000 {
-            label = "storage";
-            reg = <0x00060000 DT_SIZE_K(128)>;
+            reg = <0x00000000 DT_SIZE_K(512)>;
         };
     };
 };

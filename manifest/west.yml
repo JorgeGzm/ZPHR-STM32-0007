@@ -20,6 +20,7 @@ manifest:
           - cmsis_6              # ARM Cortex-M headers (CMSIS 6)
           - hal_stm32            # STM32 HAL
           - picolibc             # C library
+          - littlefs             # LittleFS filesystem
           - lvgl                 # LVGL graphics library
 
     - name: zlib
