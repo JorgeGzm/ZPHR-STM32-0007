@@ -28,11 +28,14 @@ void display_init_screens(void)
     }
 
     lv_init();
-    
-    display_set_backlight(1);
-    printk("LVGL initialized\r\n");
 
-    display_blanking_off(display_device);
+    int ret = display_blanking_off(display_device);
+    printk("display_blanking_off: %d\r\n", ret);
+
+    ret = display_set_backlight(5);
+    printk("display_set_backlight: %d\r\n", ret);
+
+    printk("LVGL initialized\r\n");
 }
 
 void display_update(void)

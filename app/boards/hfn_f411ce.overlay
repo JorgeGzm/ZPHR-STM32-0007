@@ -90,14 +90,14 @@
         #address-cells = <1>;
         #size-cells = <0>;
 
-        ili9341: ili9341@0 {
+        ili9341: ili9341@1 {
 			compatible = "ilitek,ili9341";
 			mipi-max-frequency = <5625000>;
 			mipi-mode = "MIPI_DBI_MODE_SPI_4WIRE";
-			reg = <0>;
+			reg = <1>;
 			width = <240>;
 			height = <320>;
-			rotation = <180>;
+			rotation = <90>;
 			pixel-format = <ILI9XXX_PIXEL_FORMAT_RGB565>;
 			frmctr1 = [00 1b]; /* 60Hz frame rate */
             display-inversion;
@@ -156,7 +156,8 @@
 
 &spi1 {
     status = "okay";
-    cs-gpios = <&gpioa 4 GPIO_ACTIVE_LOW>;
+    cs-gpios = <&gpioa 4 GPIO_ACTIVE_LOW>,    /* CS0: W25Q64 */
+               <&gpioa 15 GPIO_ACTIVE_LOW>;   /* CS1: ILI9341 */
 
     w25q64: w25q64@0 {
         compatible = "jedec,spi-nor";

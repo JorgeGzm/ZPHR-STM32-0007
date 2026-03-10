@@ -5,6 +5,7 @@
 #include "screen/basic_widgets.h"
 #include "screen/basic_events.h"
 #include "screen/main_screen.h"
+#include "screen/protimer_screen.h"
 
 #include <zephyr/bindesc.h>
 #include <zephyr/input/input.h>
@@ -54,14 +55,18 @@ int main(void)
     main_screen_show();
     #endif
 
-    #if 1
+    #if 0
     // basic_widgets_ex1();
     basic_widgets_events_ex2();
+    #endif
 
+    #if 1
+    protimer_screen_create();
     #endif
 
     while (true)
     {
+        protimer_process();
         display_update();
         k_msleep(50);
     }
@@ -69,5 +74,5 @@ int main(void)
     return 0;
 }
 
-K_THREAD_DEFINE(adc3_id, STACKSIZE, adc_thread, NULL, NULL, NULL,
-                PRIORITY, 0, 0);
+// K_THREAD_DEFINE(adc3_id, STACKSIZE, adc_thread, NULL, NULL, NULL,
+//                 PRIORITY, 0, 0);

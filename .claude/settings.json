@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /home/jaga/Workspace/work/11-Zephyr/ZPHR-STM32-0007 diff HEAD~3..HEAD)",
+      "Bash(git -C /home/jaga/Workspace/work/11-Zephyr/ZPHR-STM32-0007 show HEAD:app/src/display_manager.c)",
+      "Bash(git -C /home/jaga/Workspace/work/11-Zephyr/ZPHR-STM32-0007 log --oneline -5 -- app/src/display_manager.c)",
+      "Bash(git -C /home/jaga/Workspace/work/11-Zephyr/ZPHR-STM32-0007 diff HEAD~1 HEAD -- app/src/display_manager.c)",
+      "Bash(git -C /home/jaga/Workspace/work/11-Zephyr/ZPHR-STM32-0007 diff HEAD -- app/src/display_manager.c)",
+      "Bash(git -C /home/jaga/Workspace/work/11-Zephyr/ZPHR-STM32-0007 status)",
+      "Bash(git -C /home/jaga/Workspace/work/11-Zephyr/ZPHR-STM32-0007 log --pretty=format:\"%h %s\" -1 -- app/src/display_manager.c)",
+      "Bash(git -C /home/jaga/Workspace/work/11-Zephyr/ZPHR-STM32-0007 log --oneline --all -15)",
+      "Bash(git -C /home/jaga/Workspace/work/11-Zephyr/ZPHR-STM32-0007 show --stat 8cbc172)",
+      "Bash(git stash:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}

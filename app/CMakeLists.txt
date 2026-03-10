@@ -22,4 +22,5 @@ target_sources(app PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/screen/basic_widgets.c
     ${CMAKE_CURRENT_SOURCE_DIR}/src/screen/basic_events.c
     ${CMAKE_CURRENT_SOURCE_DIR}/src/screen/main_screen.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/screen/protimer_screen.c
 )
