@@ -11,7 +11,7 @@ include(${ZEPHYR_BASE}/samples/subsys/usb/common/common.cmake)
 target_include_directories(app PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/inc
     ${CMAKE_CURRENT_SOURCE_DIR}/src/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/screen
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/screen/inc
     ${CMAKE_CURRENT_SOURCE_DIR}/src/fonts
 )
 
@@ -19,8 +19,11 @@ target_sources(app PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/main.c
     ${CMAKE_CURRENT_SOURCE_DIR}/src/adc_read.c
     ${CMAKE_CURRENT_SOURCE_DIR}/src/display_manager.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/screen/basic_widgets.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/screen/basic_events.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/screen/main_screen.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/screen/protimer_screen.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/screen/src/menu_screen.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/screen/src/protimer_view.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/screen/src/protimer_model.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/screen/src/protimer_screen.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/screen/src/clockalarm_view.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/screen/src/clockalarm_model.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/screen/src/clockalarm_screen.c
 )

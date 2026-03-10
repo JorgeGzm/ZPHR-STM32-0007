@@ -2,15 +2,15 @@
 #include "adc_read.h"
 #include "display_manager.h"
 
-#include "screen/basic_widgets.h"
-#include "screen/basic_events.h"
-#include "screen/main_screen.h"
-#include "screen/protimer_screen.h"
+#include "menu_screen.h"
+#include "protimer_screen.h"
+#include "clockalarm_screen.h"
 
 #include <zephyr/bindesc.h>
 #include <zephyr/input/input.h>
 #include <zephyr/fs/littlefs.h>
 #include <zephyr/storage/flash_map.h>
+#include <lvgl.h>
 
 #include "xfs.h"
 
@@ -26,19 +26,53 @@ static struct fs_mount_t lfs_storage_mnt = {
     .mnt_point = "/lfs1",
 };
 
-static void adc_thread(void);
+enum active_screen {
+    SCREEN_MENU,
+    SCREEN_PROTIMER,
+    SCREEN_CLOCKALARM,
+};
 
-static void adc_thread(void)
+static enum active_screen current_screen;
+
+static void show_menu(void);
+
+static void on_back(void)
 {
-    double val_percent;
-    adc_read_init();
-
-    while (1) {
-        k_msleep(1000);
-
-        val_percent = adc_read_val_percent_bbat();
-        val_percent = adc_read_val_percent_pilbat();
+    switch (current_screen) {
+    case SCREEN_PROTIMER:
+        protimer_screen_destroy();
+        break;
+    case SCREEN_CLOCKALARM:
+        clockalarm_screen_destroy();
+        break;
+    default:
+        break;
     }
+
+    lv_obj_clean(lv_scr_act());
+    show_menu();
+}
+
+static void on_menu_select(enum menu_selection sel)
+{
+    lv_obj_clean(lv_scr_act());
+
+    switch (sel) {
+    case MENU_PROTIMER:
+        current_screen = SCREEN_PROTIMER;
+        protimer_screen_create(on_back);
+        break;
+    case MENU_CLOCKALARM:
+        current_screen = SCREEN_CLOCKALARM;
+        clockalarm_screen_create(on_back);
+        break;
+    }
+}
+
+static void show_menu(void)
+{
+    current_screen = SCREEN_MENU;
+    menu_screen_create(on_menu_select);
 }
 
 int main(void)
@@ -49,30 +83,23 @@ int main(void)
 
     display_init_screens();
 
-    #if 0
-    /* basic screen demo */
-    main_screen_create();
-    main_screen_show();
-    #endif
+    show_menu();
 
-    #if 0
-    // basic_widgets_ex1();
-    basic_widgets_events_ex2();
-    #endif
+    while (true) {
+        switch (current_screen) {
+        case SCREEN_PROTIMER:
+            protimer_process();
+            break;
+        case SCREEN_CLOCKALARM:
+            clockalarm_process();
+            break;
+        default:
+            break;
+        }
 
-    #if 1
-    protimer_screen_create();
-    #endif
-
-    while (true)
-    {
-        protimer_process();
         display_update();
         k_msleep(50);
     }
 
     return 0;
 }
-
-// K_THREAD_DEFINE(adc3_id, STACKSIZE, adc_thread, NULL, NULL, NULL,
-//                 PRIORITY, 0, 0);

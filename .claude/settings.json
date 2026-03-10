@@ -11,7 +11,13 @@
       "Bash(git -C /home/jaga/Workspace/work/11-Zephyr/ZPHR-STM32-0007 log --oneline --all -15)",
       "Bash(git -C /home/jaga/Workspace/work/11-Zephyr/ZPHR-STM32-0007 show --stat 8cbc172)",
       "Bash(git stash:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(grep -E '\\\\.\\(c|h|cpp|qm|txt|md\\)$')",
+      "Bash(mv *.h inc/)",
+      "Bash(mv *.c src/)"
+    ],
+    "additionalDirectories": [
+      "/home/jaga/Workspace/work/11-Zephyr/ZPHR-STM32-0007/app/src/screen"
     ]
   }
 }
