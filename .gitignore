@@ -14,4 +14,4 @@ app/build/
 # West managed modules (cloned by west update)
 zephyr/
 modules/
-zlib/
+gzm/

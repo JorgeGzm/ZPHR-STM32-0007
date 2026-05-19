@@ -6,7 +6,7 @@ manifest:
     - name: zephyrproject-rtos
       url-base: https://github.com/zephyrproject-rtos
     - name: JorgeGzm
-      url-base: https://github.com/JorgeGzm
+      url-base: git@github.com:JorgeGzm
 
   projects:
     - name: zephyr
@@ -23,7 +23,7 @@ manifest:
           - littlefs             # LittleFS filesystem
           - lvgl                 # LVGL graphics library
 
-    - name: zlib
+    - name: gzm-zephyr-modules
       remote: JorgeGzm
       revision: main
-      path: zlib
+      path: gzm

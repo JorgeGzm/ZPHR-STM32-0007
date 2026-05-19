@@ -1,10 +1,17 @@
-#include <zephyr/kernel.h>
-#include <zephyr/smf.h>
+/*
+ * Copyright (c) 2026 GZM Embarcados
+ */
+
+/**
+ * @file clockalarm_model.c
+ * @brief Clock/Alarm state machine — 4-state SMF with 1-second tick.
+ */
+
 #include "clockalarm_model.h"
 
-/* -------------------------------------------------------------------------- */
-/*  Internal types                                                            */
-/* -------------------------------------------------------------------------- */
+#include <zephyr/kernel.h>
+#include <zephyr/smf.h>
+
 enum ca_state_id {
 	CA_STATE_TICKING,
 	CA_STATE_CLOCK_SETTING,
@@ -17,61 +24,81 @@ enum setting_field {
 	FIELD_HOUR,
 	FIELD_MIN,
 	FIELD_SEC,
-	FIELD_ONOFF,   /* alarm setting only */
+	FIELD_ONOFF,
 };
-
-static const struct smf_state ca_states[];
 
 struct ca_obj {
-	struct smf_ctx ctx;
-	enum clockalarm_event event;
-	/* Current time */
-	uint8_t hour;
-	uint8_t min;
-	uint8_t sec;
-	/* Alarm time */
-	uint8_t alarm_hour;
-	uint8_t alarm_min;
-	uint8_t alarm_sec;
-	bool alarm_enabled;
-	/* Temp editing values */
-	uint8_t edit_h;
-	uint8_t edit_m;
-	uint8_t edit_s;
-	bool edit_onoff;
+	struct smf_ctx         ctx;
+	enum clockalarm_event  event;
+	uint8_t  hour;
+	uint8_t  min;
+	uint8_t  sec;
+	uint8_t  alarm_hour;
+	uint8_t  alarm_min;
+	uint8_t  alarm_sec;
+	bool     alarm_enabled;
+	uint8_t  edit_h;
+	uint8_t  edit_m;
+	uint8_t  edit_s;
+	bool     edit_onoff;
 	enum setting_field field;
-	/* Alarm notify blink */
-	uint8_t blink_count;
-	bool blink_on;
+	uint8_t  blink_count;
+	bool     blink_on;
 };
+
+/* Forward declarations of static helpers. */
+static void tick_handler(struct k_timer *timer);
+static void notify_time(void);
+static void notify_alarm(void);
+static void notify_state(const char *msg);
+static void notify_status(const char *msg);
+static void notify_edit_time(void);
+static const char *field_name(enum setting_field f);
+static void adjust_field(struct ca_obj *o, int dir);
+static void ticking_entry(void *obj);
+static enum smf_state_result ticking_run(void *obj);
+static void clock_setting_entry(void *obj);
+static enum smf_state_result clock_setting_run(void *obj);
+static void alarm_setting_entry(void *obj);
+static enum smf_state_result alarm_setting_run(void *obj);
+static void alarm_notify_entry(void *obj);
+static enum smf_state_result alarm_notify_run(void *obj);
 
 static struct ca_obj s_obj;
 static const struct clockalarm_model_cb *s_cb;
 
 K_MSGQ_DEFINE(ca_msgq, sizeof(enum clockalarm_event), 16, 4);
+K_TIMER_DEFINE(ca_timer, tick_handler, NULL);
 
-/* -------------------------------------------------------------------------- */
-/*  Timer: 1-second tick                                                      */
-/* -------------------------------------------------------------------------- */
+static const struct smf_state ca_states[] = {
+	[CA_STATE_TICKING]       = SMF_CREATE_STATE(ticking_entry, ticking_run,
+						     NULL, NULL, NULL),
+	[CA_STATE_CLOCK_SETTING] = SMF_CREATE_STATE(clock_setting_entry,
+						     clock_setting_run,
+						     NULL, NULL, NULL),
+	[CA_STATE_ALARM_SETTING] = SMF_CREATE_STATE(alarm_setting_entry,
+						     alarm_setting_run,
+						     NULL, NULL, NULL),
+	[CA_STATE_ALARM_NOTIFY]  = SMF_CREATE_STATE(alarm_notify_entry,
+						     alarm_notify_run,
+						     NULL, NULL, NULL),
+};
+
 static void tick_handler(struct k_timer *timer)
 {
 	enum clockalarm_event evt = CA_EVT_TICK;
+
 	k_msgq_put(&ca_msgq, &evt, K_NO_WAIT);
 }
 
-K_TIMER_DEFINE(ca_timer, tick_handler, NULL);
-
-/* -------------------------------------------------------------------------- */
-/*  Notify helpers                                                            */
-/* -------------------------------------------------------------------------- */
-static inline void notify_time(void)
+static void notify_time(void)
 {
 	if (s_cb && s_cb->on_time) {
 		s_cb->on_time(s_obj.hour, s_obj.min, s_obj.sec);
 	}
 }
 
-static inline void notify_alarm(void)
+static void notify_alarm(void)
 {
 	if (s_cb && s_cb->on_alarm) {
 		s_cb->on_alarm(s_obj.alarm_hour, s_obj.alarm_min,
@@ -79,14 +106,14 @@ static inline void notify_alarm(void)
 	}
 }
 
-static inline void notify_state(const char *msg)
+static void notify_state(const char *msg)
 {
 	if (s_cb && s_cb->on_state) {
 		s_cb->on_state(msg);
 	}
 }
 
-static inline void notify_status(const char *msg)
+static void notify_status(const char *msg)
 {
 	if (s_cb && s_cb->on_status) {
 		s_cb->on_status(msg);
@@ -111,9 +138,6 @@ static const char *field_name(enum setting_field f)
 	}
 }
 
-/* -------------------------------------------------------------------------- */
-/*  Increment/decrement helpers                                               */
-/* -------------------------------------------------------------------------- */
 static void adjust_field(struct ca_obj *o, int dir)
 {
 	switch (o->field) {
@@ -132,9 +156,7 @@ static void adjust_field(struct ca_obj *o, int dir)
 	}
 }
 
-/* -------------------------------------------------------------------------- */
-/*  TICKING state                                                             */
-/* -------------------------------------------------------------------------- */
+/* TICKING */
 static void ticking_entry(void *obj)
 {
 	struct ca_obj *o = obj;
@@ -144,7 +166,6 @@ static void ticking_entry(void *obj)
 	notify_alarm();
 	notify_status("SET=config  OK=alarm");
 
-	/* Start 1-second tick */
 	k_timer_start(&ca_timer, K_SECONDS(1), K_SECONDS(1));
 
 	(void)o;
@@ -156,7 +177,6 @@ static enum smf_state_result ticking_run(void *obj)
 
 	switch (o->event) {
 	case CA_EVT_TICK:
-		/* Advance clock */
 		o->sec++;
 		if (o->sec >= 60) {
 			o->sec = 0;
@@ -171,22 +191,18 @@ static enum smf_state_result ticking_run(void *obj)
 		}
 		notify_time();
 
-		/* Check alarm */
 		if (o->alarm_enabled &&
 		    o->hour == o->alarm_hour &&
-		    o->min == o->alarm_min &&
-		    o->sec == o->alarm_sec) {
-			smf_set_state(SMF_CTX(o),
-				      &ca_states[CA_STATE_ALARM_NOTIFY]);
+		    o->min  == o->alarm_min  &&
+		    o->sec  == o->alarm_sec) {
+			smf_set_state(SMF_CTX(o), &ca_states[CA_STATE_ALARM_NOTIFY]);
 		}
 		break;
 	case CA_EVT_SET:
-		smf_set_state(SMF_CTX(o),
-			      &ca_states[CA_STATE_CLOCK_SETTING]);
+		smf_set_state(SMF_CTX(o), &ca_states[CA_STATE_CLOCK_SETTING]);
 		break;
 	case CA_EVT_OK:
-		smf_set_state(SMF_CTX(o),
-			      &ca_states[CA_STATE_ALARM_SETTING]);
+		smf_set_state(SMF_CTX(o), &ca_states[CA_STATE_ALARM_SETTING]);
 		break;
 	default:
 		break;
@@ -195,9 +211,7 @@ static enum smf_state_result ticking_run(void *obj)
 	return SMF_EVENT_HANDLED;
 }
 
-/* -------------------------------------------------------------------------- */
-/*  CLOCK_SETTING state                                                       */
-/* -------------------------------------------------------------------------- */
+/* CLOCK_SETTING */
 static void clock_setting_entry(void *obj)
 {
 	struct ca_obj *o = obj;
@@ -207,7 +221,7 @@ static void clock_setting_entry(void *obj)
 	o->edit_h = o->hour;
 	o->edit_m = o->min;
 	o->edit_s = o->sec;
-	o->field = FIELD_HOUR;
+	o->field  = FIELD_HOUR;
 
 	notify_state("SETTING CLOCK");
 	notify_edit_time();
@@ -228,18 +242,15 @@ static enum smf_state_result clock_setting_run(void *obj)
 		notify_edit_time();
 		break;
 	case CA_EVT_OK:
-		/* Next field: H → M → S → confirm */
 		if (o->field == FIELD_HOUR) {
 			o->field = FIELD_MIN;
 		} else if (o->field == FIELD_MIN) {
 			o->field = FIELD_SEC;
 		} else {
-			/* Confirm: apply edited time */
 			o->hour = o->edit_h;
-			o->min = o->edit_m;
-			o->sec = o->edit_s;
-			smf_set_state(SMF_CTX(o),
-				      &ca_states[CA_STATE_TICKING]);
+			o->min  = o->edit_m;
+			o->sec  = o->edit_s;
+			smf_set_state(SMF_CTX(o), &ca_states[CA_STATE_TICKING]);
 			return SMF_EVENT_HANDLED;
 		}
 		notify_status(field_name(o->field));
@@ -254,20 +265,18 @@ static enum smf_state_result clock_setting_run(void *obj)
 	return SMF_EVENT_HANDLED;
 }
 
-/* -------------------------------------------------------------------------- */
-/*  ALARM_SETTING state                                                       */
-/* -------------------------------------------------------------------------- */
+/* ALARM_SETTING */
 static void alarm_setting_entry(void *obj)
 {
 	struct ca_obj *o = obj;
 
 	k_timer_stop(&ca_timer);
 
-	o->edit_h = o->alarm_hour;
-	o->edit_m = o->alarm_min;
-	o->edit_s = o->alarm_sec;
+	o->edit_h     = o->alarm_hour;
+	o->edit_m     = o->alarm_min;
+	o->edit_s     = o->alarm_sec;
 	o->edit_onoff = o->alarm_enabled;
-	o->field = FIELD_HOUR;
+	o->field      = FIELD_HOUR;
 
 	notify_state("SETTING ALARM");
 	notify_edit_time();
@@ -296,7 +305,6 @@ static enum smf_state_result alarm_setting_run(void *obj)
 		}
 		break;
 	case CA_EVT_OK:
-		/* Next field: H → M → S → ON/OFF → confirm */
 		if (o->field == FIELD_HOUR) {
 			o->field = FIELD_MIN;
 		} else if (o->field == FIELD_MIN) {
@@ -304,13 +312,11 @@ static enum smf_state_result alarm_setting_run(void *obj)
 		} else if (o->field == FIELD_SEC) {
 			o->field = FIELD_ONOFF;
 		} else {
-			/* Confirm: apply alarm settings */
-			o->alarm_hour = o->edit_h;
-			o->alarm_min = o->edit_m;
-			o->alarm_sec = o->edit_s;
+			o->alarm_hour    = o->edit_h;
+			o->alarm_min     = o->edit_m;
+			o->alarm_sec     = o->edit_s;
 			o->alarm_enabled = o->edit_onoff;
-			smf_set_state(SMF_CTX(o),
-				      &ca_states[CA_STATE_TICKING]);
+			smf_set_state(SMF_CTX(o), &ca_states[CA_STATE_TICKING]);
 			return SMF_EVENT_HANDLED;
 		}
 		notify_status(field_name(o->field));
@@ -328,20 +334,18 @@ static enum smf_state_result alarm_setting_run(void *obj)
 	return SMF_EVENT_HANDLED;
 }
 
-/* -------------------------------------------------------------------------- */
-/*  ALARM_NOTIFY state                                                        */
-/* -------------------------------------------------------------------------- */
+/* ALARM_NOTIFY */
 static void alarm_notify_entry(void *obj)
 {
 	struct ca_obj *o = obj;
 
 	o->blink_count = 0;
-	o->blink_on = true;
+	o->blink_on    = true;
 
 	notify_state("!! ALARM !!");
 	notify_status("Press any button to dismiss");
 
-	/* Fast tick for blinking (500ms) */
+	/* 500 ms blink period. */
 	k_timer_start(&ca_timer, K_MSEC(500), K_MSEC(500));
 }
 
@@ -355,9 +359,8 @@ static enum smf_state_result alarm_notify_run(void *obj)
 		notify_state(o->blink_on ? "!! ALARM !!" : "");
 		o->blink_count++;
 		if (o->blink_count >= 60) {
-			/* Auto-dismiss after 30 seconds */
-			smf_set_state(SMF_CTX(o),
-				      &ca_states[CA_STATE_TICKING]);
+			/* Auto-dismiss after 30 seconds. */
+			smf_set_state(SMF_CTX(o), &ca_states[CA_STATE_TICKING]);
 		}
 		break;
 	case CA_EVT_SET:
@@ -365,7 +368,6 @@ static enum smf_state_result alarm_notify_run(void *obj)
 	case CA_EVT_INC:
 	case CA_EVT_DEC:
 	case CA_EVT_ABRT:
-		/* Any button dismisses */
 		smf_set_state(SMF_CTX(o), &ca_states[CA_STATE_TICKING]);
 		break;
 	default:
@@ -375,39 +377,17 @@ static enum smf_state_result alarm_notify_run(void *obj)
 	return SMF_EVENT_HANDLED;
 }
 
-/* -------------------------------------------------------------------------- */
-/*  State table                                                               */
-/* -------------------------------------------------------------------------- */
-static const struct smf_state ca_states[] = {
-	[CA_STATE_TICKING]       = SMF_CREATE_STATE(ticking_entry, ticking_run,
-						    NULL, NULL, NULL),
-	[CA_STATE_CLOCK_SETTING] = SMF_CREATE_STATE(clock_setting_entry,
-						    clock_setting_run,
-						    NULL, NULL, NULL),
-	[CA_STATE_ALARM_SETTING] = SMF_CREATE_STATE(alarm_setting_entry,
-						    alarm_setting_run,
-						    NULL, NULL, NULL),
-	[CA_STATE_ALARM_NOTIFY]  = SMF_CREATE_STATE(alarm_notify_entry,
-						    alarm_notify_run,
-						    NULL, NULL, NULL),
-};
-
-/* -------------------------------------------------------------------------- */
-/*  Public API                                                                */
-/* -------------------------------------------------------------------------- */
 void clockalarm_model_init(const struct clockalarm_model_cb *cb)
 {
 	s_cb = cb;
 
-	/* Initial time: 10:10:10 (same as 008 example) */
 	s_obj.hour = 10;
-	s_obj.min = 10;
-	s_obj.sec = 10;
+	s_obj.min  = 10;
+	s_obj.sec  = 10;
 
-	/* Initial alarm: 08:00:00 OFF */
-	s_obj.alarm_hour = 8;
-	s_obj.alarm_min = 0;
-	s_obj.alarm_sec = 0;
+	s_obj.alarm_hour    = 8;
+	s_obj.alarm_min     = 0;
+	s_obj.alarm_sec     = 0;
 	s_obj.alarm_enabled = false;
 
 	smf_set_initial(SMF_CTX(&s_obj), &ca_states[CA_STATE_TICKING]);

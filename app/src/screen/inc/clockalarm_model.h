@@ -1,12 +1,21 @@
-#ifndef CLOCKALARM_MODEL_H
-#define CLOCKALARM_MODEL_H
+/*
+ * Copyright (c) 2026 GZM Embarcados
+ */
+
+/**
+ * @file clockalarm_model.h
+ * @brief Clock/Alarm state machine model — events and callback interface.
+ */
+
+#ifndef APP_CLOCKALARM_MODEL_H
+#define APP_CLOCKALARM_MODEL_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include <stdint.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 enum clockalarm_event {
 	CA_EVT_NONE,
@@ -25,13 +34,32 @@ struct clockalarm_model_cb {
 	void (*on_status)(const char *msg);
 };
 
+/**
+ * @brief Initialize the Clock/Alarm model with initial time and alarm values.
+ *
+ * @param cb Pointer to callback struct (must remain valid for model lifetime).
+ */
 void clockalarm_model_init(const struct clockalarm_model_cb *cb);
+
+/**
+ * @brief Stop the tick timer and flush the event queue.
+ */
 void clockalarm_model_stop(void);
+
+/**
+ * @brief Enqueue an event for processing.
+ *
+ * @param evt Event to enqueue.
+ */
 void clockalarm_model_send_event(enum clockalarm_event evt);
+
+/**
+ * @brief Drain the event queue and run the state machine.
+ */
 void clockalarm_model_process(void);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* CLOCKALARM_MODEL_H */
+#endif /* APP_CLOCKALARM_MODEL_H */
